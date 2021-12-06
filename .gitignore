@@ -13,7 +13,7 @@ local.properties
 Library/ArtifactDB
 	
 *.so
-
+.DS_Store
 
 # Android Studio generated files and folders
 captures/
