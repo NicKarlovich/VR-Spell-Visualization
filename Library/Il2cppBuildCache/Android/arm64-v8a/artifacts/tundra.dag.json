@@ -1,0 +1,143 @@
+{
+  "Nodes": [
+    {
+      "Annotation": "all_tundra_nodes",
+      "Action": "",
+      "Inputs": [],
+      "Outputs": [],
+      "TargetDirectories": [],
+      "PassIndex": 0,
+      "ToBuildDependencies": [
+        1
+      ],
+      "ToUseDependencies": [],
+      "OverwriteOutputs": true,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 0
+    },
+    {
+      "Annotation": "Il2Cpp /Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Library/Il2cppBuildCache/Android/arm64-v8a/Native/arm64-v8a/libil2cpp.so",
+      "Action": "\"/Applications/2020.3.18f1/Unity.app/Contents/il2cpp/build/deploy/netcoreapp3.1/il2cpp\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --compile-cpp --libil2cpp-static --platform=\"Android\" --architecture=\"ARM64\" --configuration=\"Release\" --outputpath=\"/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Library/Il2cppBuildCache/Android/arm64-v8a/Native/arm64-v8a/libil2cpp.so\" --cachedirectory=\"/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Assets/../Library/il2cpp_android_arm64-v8a/il2cpp_cache\" --additional-include-directories=\"/Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Tools/bdwgc/include\" --additional-include-directories=\"/Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Tools/libil2cpp/include\" --baselib-directory=\"/Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Variations/il2cpp/Release/StaticLibs/arm64-v8a\" --avoid-dynamic-library-copy --tool-chain-path=\"/Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/NDK\" --profiler-report --map-file-parser=\"/Applications/2020.3.18f1/Unity.app/Contents/Tools/MapFileParser/MapFileParser\" --directory=\"/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed\" --generatedcppdir=\"/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Library/Il2cppBuildCache/Android/arm64-v8a/il2cppOutput\"",
+      "Inputs": [
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/Assembly-CSharp.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/Mono.Security.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/System.Configuration.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/System.Core.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/System.Xml.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/System.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/Unity.InputSystem.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/Unity.XR.Interaction.Toolkit.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/Unity.XR.Management.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/Unity.XR.Oculus.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.ARModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.AndroidJNIModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.AnimationModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.AudioModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.CoreModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.GridModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.IMGUIModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.InputLegacyModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.InputModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.JSONSerializeModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.Physics2DModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.PhysicsModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.SharedInternalsModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.SpatialTracking.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.SpriteShapeModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.SubsystemsModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.TextRenderingModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.TilemapModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.UI.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.UIModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.VRModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.XRModule.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/UnityEngine.dll",
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Temp/StagingArea/assets/bin/Data/Managed/mscorlib.dll",
+        "/Applications/2020.3.18f1/Unity.app/Contents/Tools/MapFileParser/MapFileParser",
+        "/Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Variations/il2cpp/Release/StaticLibs/arm64-v8a/baselib.a",
+        "/Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Variations/il2cpp/Release/StaticLibs/arm64-v8a/libunityruntime.a",
+        "\"/Applications/2020.3.18f1/Unity.app/Contents/il2cpp/build/deploy/netcoreapp3.1/il2cpp\""
+      ],
+      "Outputs": [
+        "/Users/audreyhebert/Documents/GitHub/project2-5611/assignment-4-LOSTINTOKY0/Library/Il2cppBuildCache/Android/arm64-v8a/Native/arm64-v8a/libil2cpp.so"
+      ],
+      "TargetDirectories": [],
+      "PassIndex": 0,
+      "ToBuildDependencies": [],
+      "ToUseDependencies": [],
+      "OverwriteOutputs": false,
+      "FrontendResponseFiles": [],
+      "AllowUnexpectedOutput": true,
+      "AllowedOutputSubstrings": [],
+      "DebugActionIndex": 1
+    }
+  ],
+  "FileSignatures": [
+    {
+      "File": "../../../../../../../../../../Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Tools/bdwgc/include"
+    },
+    {
+      "File": "../../../../../../../../../../Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Tools/libil2cpp/include"
+    },
+    {
+      "File": "../../../../../../../../../../Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Variations/il2cpp/Release/StaticLibs/arm64-v8a"
+    },
+    {
+      "File": "../../../../../../../../Library"
+    },
+    {
+      "File": "../../../../Temp/StagingArea/assets/bin/Data/Managed"
+    },
+    {
+      "File": "artifacts/buildprogram/tundra_buildprogram.dag.json"
+    },
+    {
+      "File": "il2cpp_settings.json"
+    },
+    {
+      "File": "unitylinker_settings.json"
+    }
+  ],
+  "GlobSignatures": [
+    {
+      "Path": "../../../../Temp/StagingArea/assets/bin/Data/Managed"
+    },
+    {
+      "Path": "../../../../../../../../../../Applications/2020.3.18f1/PlaybackEngines/AndroidPlayer/Variations/il2cpp/Release/StaticLibs/arm64-v8a",
+      "Recurse": 1
+    }
+  ],
+  "ContentDigestExtensions": [
+    ".rsp",
+    ".dll",
+    ".exe",
+    ".txt",
+    ".c",
+    ".cpp",
+    ".h",
+    ".cs",
+    ".hpp"
+  ],
+  "StructuredLogFileName": "artifacts/tundra.log.json",
+  "StateFileName": "artifacts/TundraBuildState.state",
+  "StateFileNameTmp": "artifacts/TundraBuildState.state.tmp",
+  "ScanCacheFileName": "artifacts/tundra.scancache",
+  "ScanCacheFileNameTmp": "artifacts/tundra.scancache.tmp",
+  "DigestCacheFileName": "artifacts/tundra.digestcache",
+  "DigestCacheFileNameTmp": "artifacts/tundra.digestcache.tmp",
+  "DirectoriesCausingImplicitDependencies": [],
+        "NamedNodes": {
+          "all_tundra_nodes": 0
+        }
+,  "DefaultNodes": [
+    0
+  ],
+  "SharedResources": [],
+  "Scanners": [],
+  "Identifier": "artifacts/tundra.dag.json",
+  "BuildTitle": "Bee",
+  "RelativePathToRoot": ".."
+}
