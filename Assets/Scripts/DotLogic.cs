@@ -34,12 +34,22 @@ public class DotLogic : MonoBehaviour
     public InputActionProperty moveAction;
     public InputActionProperty grabAction;
     public InputActionProperty triggerAction;
+    public InputActionProperty BButton;
+    public InputActionProperty AButton;
 
     bool triggerDown = false;
     float triggerPull;
     float runningTimer;
     int continuousTilesMoved = 0;
     float timingFactor = .4f;
+
+    bool yAxisInUse = false;
+    bool trackingADown = false;
+    bool trackingBDown = false;
+
+    float vertButtonPress;
+    float runningVertTimer;
+    int vertContinuousTilesMoved = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +66,11 @@ public class DotLogic : MonoBehaviour
         triggerAction.action.performed += PreciseGrab;
         triggerAction.action.canceled += PreciseRelease;
 
+        AButton.action.performed += ADown;
+        AButton.action.canceled += AUp;
+        BButton.action.performed += BDown;
+        BButton.action.canceled += BUp;
+
         grabPoint = new GameObject().transform;
         grabPoint.localPosition = new Vector3(0, 0, 0);
         selectionDot.transform.localPosition = new Vector3(0, 0, 0);
@@ -71,6 +86,11 @@ public class DotLogic : MonoBehaviour
         grabAction.action.canceled -= Release;
         triggerAction.action.performed -= PreciseGrab;
         triggerAction.action.canceled -= PreciseRelease;
+
+        AButton.action.performed -= ADown;
+        AButton.action.canceled -= AUp;
+        BButton.action.performed -= BDown;
+        BButton.action.canceled -= BUp;
     }
 
     // Update is called once per frame
@@ -156,6 +176,39 @@ public class DotLogic : MonoBehaviour
             selectionCube.transform.position = new Vector3(cubeX, cubeY, cubeZ);
         } else
         {
+            if(yAxisInUse)
+            {
+                runningVertTimer = Time.time;
+                if(runningVertTimer - vertButtonPress > timingFactor)
+                {
+                    vertButtonPress = runningVertTimer;
+                    if(trackingADown)
+                    {
+                        AMovement();
+                    }
+                    if(trackingBDown)
+                    {
+                        BMovement();
+                    }
+                    vertContinuousTilesMoved++;
+                    if (vertContinuousTilesMoved == 2)
+                    {
+                        timingFactor = 0.2f;
+                    }
+                    if (vertContinuousTilesMoved == 3)
+                    {
+                        timingFactor = 0.17f;
+                    }
+                    if (vertContinuousTilesMoved == 4)
+                    {
+                        timingFactor = 0.13f;
+                    }
+                    if (vertContinuousTilesMoved == 7)
+                    {
+                        timingFactor = 0.1f;
+                    }
+                }
+            }
             if(triggerDown)
             {
                 runningTimer = Time.time;
@@ -182,6 +235,65 @@ public class DotLogic : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void AMovement()
+    {
+        Vector3 currentCube = selectionCube.transform.position;
+        selectionCube.transform.position = currentCube + Vector3.down;
+    }
+
+    public void ADown(InputAction.CallbackContext context)
+    {
+        if(!yAxisInUse)
+        {
+            trackingADown = true;
+            yAxisInUse = true;
+            AMovement();
+            vertContinuousTilesMoved = 0;
+            timingFactor = .4f;
+            vertButtonPress = Time.time;
+            runningVertTimer = Time.time;
+        }
+        
+    }
+
+    public void AUp(InputAction.CallbackContext context)
+    {
+        if(trackingADown)
+        {
+            yAxisInUse = false;
+            trackingADown = false;
+        }
+    }
+
+    public void BMovement()
+    {
+        Vector3 currentCube = selectionCube.transform.position;
+        selectionCube.transform.position = currentCube + Vector3.up;
+    }
+
+    public void BDown(InputAction.CallbackContext context)
+    {
+        if(!yAxisInUse)
+        {
+            trackingBDown = true;
+            yAxisInUse = true;
+            BMovement();
+            vertContinuousTilesMoved = 0;
+            timingFactor = .4f;
+            vertButtonPress = Time.time;
+            runningVertTimer = Time.time;
+        }
+    }
+
+    public void BUp(InputAction.CallbackContext context)
+    {
+        if(trackingBDown)
+        {
+            yAxisInUse = false;
+            trackingBDown = false;
         }
     }
 
