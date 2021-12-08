@@ -1240,6 +1240,7 @@ MonoBehaviour:
   rightHandController: {fileID: 1185451026}
   selectionDot: {fileID: 738021332}
   selectionCube: {fileID: 2076761962}
+  headset: {fileID: 2103210287}
   laserPointer: {fileID: 1185451027}
   moveAction:
     m_UseReference: 1
@@ -1264,6 +1265,18 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
     m_Reference: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  triggerAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 15f5048d-e5a0-4882-b576-a843f020a59f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
 --- !u!1 &1443198709 stripped
 GameObject:
