@@ -44,8 +44,5 @@ public class debug : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-      Debug.Log("in debuygger hahehehe");
-    }
+    
 }

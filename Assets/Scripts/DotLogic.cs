@@ -58,7 +58,7 @@ public class DotLogic : MonoBehaviour
             }
 
             Vector3 grabPos = selectionDot.transform.TransformPoint(selectionDot.transform.localPosition);
-            Debug.Log(grabPos);
+          //  Debug.Log(grabPos);
 
             float cubeX = Mathf.Ceil(grabPos.x) - 0.5f;
             float cubeY = Mathf.Ceil(grabPos.y) - 0.5f;
@@ -66,7 +66,7 @@ public class DotLogic : MonoBehaviour
 
             selectionCube.transform.position = new Vector3(cubeX, cubeY, cubeZ);
         }
-        
+
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -80,7 +80,7 @@ public class DotLogic : MonoBehaviour
                 grabPoint.localPosition = new Vector3(0, 0, 0.25f);
             }
         }
-        
+
 
         //Debug.Log("test?");
         //Debug.Log(context.action.ReadValue<Vector2>());
@@ -91,7 +91,7 @@ public class DotLogic : MonoBehaviour
     {
         //float gripped = context.action.ReadValue<float>();
         //Debug.Log(gripped);
-        Debug.Log("grab");
+      //  Debug.Log("grab");
         pointing = true;
     }
 
@@ -100,7 +100,7 @@ public class DotLogic : MonoBehaviour
         /*float gripped = context.action.ReadValue<float>();
         Debug.Log(gripped);
         */
-        Debug.Log("release");
+      //  Debug.Log("release");
         pointing = false;
     }
 }
