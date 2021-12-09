@@ -10,7 +10,7 @@ local.properties
 
 #just huge, needed to be removed
 
-Library/ArtifactDB
+#Library/ArtifactDB
 	
 *.so
 .DS_Store
@@ -41,6 +41,7 @@ google-services.json
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+Library/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -98,3 +99,10 @@ sysinfo.txt
 crashlytics-build.properties
 
 .vsconfig
+Library/ShaderCache/EditorEncounteredVariants
+Library/SourceAssetDB
+Library/CurrentLayout-default.dwlt
+Library/InspectorExpandedItems.asset
+Library/SceneVisibilityState.asset
+Library/InspectorExpandedItems.asset
+Library/SceneVisibilityState.asset
