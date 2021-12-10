@@ -632,7 +632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &722410066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,6 +832,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4949837510494428226, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949837510494428226, guid: 9f5a24a380916d14db9775daab4fe333,
+        type: 3}
       propertyPath: m_ActionAssets.Array.data[0]
       value: 
       objectReference: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
@@ -839,7 +844,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187026, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
@@ -1240,6 +1245,7 @@ MonoBehaviour:
   rightHandController: {fileID: 1185451026}
   selectionDot: {fileID: 738021332}
   selectionCube: {fileID: 2076761962}
+  headset: {fileID: 2103210287}
   laserPointer: {fileID: 1185451027}
   moveAction:
     m_UseReference: 1
@@ -1264,6 +1270,42 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
     m_Reference: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  triggerAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 15f5048d-e5a0-4882-b576-a843f020a59f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  BButton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: B Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 4b3fa042-410e-4cd2-ad11-1bc8c27f3694
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Reference: {fileID: 7929563903266545712, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  AButton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: A Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f15e4b69-a7df-422d-a37e-80124d4de24a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Reference: {fileID: -5593942809360346633, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
 --- !u!1 &1443198709 stripped
 GameObject:
@@ -1660,7 +1702,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771046202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a5df2202a8b96488c744be3bd0c33e, type: 3}
   m_Name: 
@@ -1749,6 +1791,9 @@ MonoBehaviour:
   rightController: {fileID: 935581502}
   spellSlice: {fileID: 4149077794485256010, guid: c3f17fca59ef54f9ab24cbe1827e8314,
     type: 3}
+  clapSpell: {fileID: 0}
+  singleKamSpell: {fileID: 0}
+  doubleKamSpell: {fileID: 0}
 --- !u!1 &2017743670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2017743671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2130,72 +2175,3 @@ Transform:
   m_Father: {fileID: 941952014}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &7826081955121282160
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7826081955525256334, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_Name
-      value: kamehameha
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.5432034
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.7804112
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.008469582
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826081955525256562, guid: 495251f9b074e4c3abe6b4def039c0e2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 495251f9b074e4c3abe6b4def039c0e2, type: 3}
