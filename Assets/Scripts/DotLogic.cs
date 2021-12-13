@@ -96,9 +96,8 @@ public class DotLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(xStick);
-        Debug.Log(yStick);
+        //Debug.Log(xStick);
+        //Debug.Log(yStick);
         //Debug.Log(headset.transform.eulerAngles.y);
         //rotation angle
         float rotA = headset.transform.eulerAngles.y;
@@ -342,8 +341,8 @@ public class DotLogic : MonoBehaviour
             forwardAndback = new Vector3(-1, 0, 0);
         }
 
-        Debug.Log(xStick);
-        Debug.Log(yStick);
+        //Debug.Log(xStick);
+        //Debug.Log(yStick);
         Vector3 currentCube = selectionCube.transform.position;
         if (xStick > 0.8)
         {
@@ -370,18 +369,20 @@ public class DotLogic : MonoBehaviour
         triggerDown = true;
         triggerPull = Time.time;
         runningTimer = Time.time;
+        /*
         Debug.Log("North: " + facingNorth);
         Debug.Log("East: " + facingEast);
         Debug.Log("South: " + facingSouth);
         Debug.Log("West: " + facingWest);
+        */
         doMovement();
-        Debug.Log("precise Grab");
+        //Debug.Log("precise Grab");
     }
 
     public void PreciseRelease(InputAction.CallbackContext context)
     {
         //don't really care when this happens, it'll happen before preciseGrab again but we don't care when.
-        Debug.Log("precise Release");
+        //Debug.Log("precise Release");
         triggerDown = false;
     }
 
