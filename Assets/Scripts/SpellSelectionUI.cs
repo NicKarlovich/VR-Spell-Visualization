@@ -21,6 +21,8 @@ public class SpellSelectionUI : MonoBehaviour
     public GameObject sphere;
     public GameObject cylinder;
 
+    public GameObject test;
+
     public Mesh genericCube;
     public Mesh genericSphere;
     public Mesh genericCylinder;
@@ -51,25 +53,37 @@ public class SpellSelectionUI : MonoBehaviour
         
     }
 
-    public void summonSpell(string type, int width, int height, int depth)
+    public void summonSpell(string type, int width, int height)
     {
         spellRepresentation.GetComponent<MeshRenderer>().enabled = true;
+        spellRepresentation.transform.localScale = new Vector3(1, 1, 1);
         if (type == "cube")
         {
+
             Debug.Log("getting here?");
-            spellRepresentation.GetComponent<MeshFilter>().mesh = (Mesh)Resources.Load("Assets/Models/Generic Cube.prefab", typeof(Mesh));
-                //Instantiate(cube.GetComponent<Mesh>());
+            //test = Resources.Load<GameObject>("GenericCube.prefab");
+            //spellRepresentation.GetComponent<MeshFilter>().mesh = test.GetComponent<MeshFilter>().mesh;
+            //Debug.Log(cube.GetComponent<MeshFilter>().mesh);
+            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(cube.GetComponent<MeshFilter>().mesh);
+            spellRepresentation.transform.localScale = spellRepresentation.transform.localScale * width;
+
         }
         if (type == "sphere")
         {
-            Debug.Log("getting here?");
-            spellRepresentation.GetComponent<MeshFilter>().mesh = (Mesh)Resources.Load("Assets/Models/Generic Sphere.prefab", typeof(Mesh));
-            //Instantiate(sphere.GetComponent<Mesh>());
+            //test = Resources.Load<GameObject>("GenericSphere.prefab");
+            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(sphere.GetComponent<MeshFilter>().mesh);
+            spellRepresentation.transform.localScale = spellRepresentation.transform.localScale * width;
         }
         if (type == "cylinder")
         {
             Debug.Log("getting here?");
-            spellRepresentation.GetComponent<MeshFilter>().mesh = (Mesh)Resources.Load("Assets/Models/Generic Cylinder.prefab", typeof(Mesh));
+            //test = Resources.Load<GameObject>("GenericCylinder.prefab");
+            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(cylinder.GetComponent<MeshFilter>().mesh);
+            Vector3 temp = spellRepresentation.transform.localScale;
+            temp.x = temp.x * width;
+            temp.y = temp.y * height;
+            temp.z = temp.z * width;
+            spellRepresentation.transform.localScale = temp;
         }
     }
 
@@ -87,30 +101,33 @@ public class SpellSelectionUI : MonoBehaviour
         if (buttonPressed == button1)
         {
             Debug.Log("Button 1");
-            summonSpell("cylinder", 0, 0, 0);
+            summonSpell("cylinder", 1, 6);
 
         }
         if (buttonPressed == button2)
         {
             Debug.Log("Button 2");
-            summonSpell("cube", 0, 0, 0);
+            summonSpell("cube", 2, 0);
         }
         if (buttonPressed == button3)
         {
             Debug.Log("Button 3");
-            summonSpell("sphere", 0, 0, 0);
+            summonSpell("sphere", 5, 0);
         }
         if (buttonPressed == customButton1)
         {
             Debug.Log("Custom Button 1");
+            summonSpell("cylinder", 2, 2);
         }
         if (buttonPressed == customButton2)
         {
             Debug.Log("Custom Button 2");
+            summonSpell("cube", 4, 0);
         }
         if (buttonPressed == customButton3)
         {
             Debug.Log("Custom Button 3");
+            summonSpell("sphere", 3, 0);
         }
         if (buttonPressed == clearButton)
         {
