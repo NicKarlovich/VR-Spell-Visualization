@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.33998796, g: 0.8203187, b: 0.9297558, a: 1}
+  m_IndirectSpecularColor: {r: 0.33929682, g: 0.8224145, b: 0.930282, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3721,9 +3721,12 @@ MonoBehaviour:
   rightController: {fileID: 935581502}
   spellSlice: {fileID: 4149077794485256010, guid: c3f17fca59ef54f9ab24cbe1827e8314,
     type: 3}
-  clapSpell: {fileID: 0}
-  singleKamSpell: {fileID: 0}
-  doubleKamSpell: {fileID: 0}
+  clapSpell: {fileID: 9177323649935462202, guid: 75d0bcce668a94c48b5983bac50f81a7,
+    type: 3}
+  singleKamSpell: {fileID: 7826081955525256334, guid: 495251f9b074e4c3abe6b4def039c0e2,
+    type: 3}
+  doubleKamSpell: {fileID: 500193472371061495, guid: f1c7f2aad8f33424990f6e0900ff6e79,
+    type: 3}
 --- !u!1 &1800749620
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
+using UnityEngine.XR;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class AvatarStance : MonoBehaviour
 {
 public Transform leftController;
 public Transform rightController;
+public Transform h;
+public InputActionProperty headsetRot;
 private Vector3 l;
 private Vector3 r;
 private Vector3 lPrev;
@@ -19,6 +24,7 @@ public GameObject doubleKamSpell;
 float timeCurr;
 float timePrev;
   float yMin;
+Vector3 head;
   /*TODO:
     - check if velocity of left or right controller has following pattern:
     ((need threshold, test via ))
@@ -41,7 +47,12 @@ float timePrev;
       yMin  =0;
       timeCurr  = Time.realtimeSinceStartup;
       timePrev= Time.realtimeSinceStartup + 2;
+      headsetRot.action.performed +=Headset;
 
+    }
+    private void OnDestroy()
+    {
+        headsetRot.action.performed -=Headset;
     }
 
     public void print(){  //debug statements here
@@ -49,9 +60,8 @@ float timePrev;
       if(lVel.y <yMin && lVel.y >-15){
         yMin = lVel.y;
       }
-      //Debug.Log("lVel: "+ lVel);
-      //Debug.Log("rVel: "+ rVel);
     }
+    
     // Update is called once per frame
     void LateUpdate()
     {
@@ -69,17 +79,20 @@ float timePrev;
 
 
     }
-
+    public void Headset(InputAction.CallbackContext context){
+      head = context.action.ReadValue<Vector3>();
+    }
 
     public void Slice(){
       if(Mathf.Abs(lVel.z) <2 &&Mathf.Abs(rVel.z)<2){ //less likely to trigger when we want Kamehameha
         if((lVel.y <=-2 && lVel.y >-15 )&&(rVel.y <=-2 && rVel.y >-15) &&(timeCurr-timePrev >1) ){ //checks double slice
-            Destroy(Instantiate(spellSlice, new Vector3(0,1,1), Quaternion.identity),1);
-            timePrev = timeCurr;
-          //  Debug.Log("slice double");
+          GameObject a =  Instantiate(spellSlice,h.position + h.forward*3, Quaternion.identity);
+          Destroy(a,1);
+
         }else if((lVel.y <=-2 && lVel.y >-15 )||(rVel.y <=-2 && rVel.y >-15 )&& (timeCurr-timePrev >1) ){  //single slice
-            Destroy(Instantiate(spellSlice, new Vector3(0,1,1), Quaternion.identity),1);
-          //  Debug.Log("slice single");
+          GameObject a =  Instantiate(spellSlice, h.position + h.forward*3, Quaternion.identity);
+          Destroy(a,1);
+
 
 
         }
@@ -98,21 +111,19 @@ float timePrev;
         if(Mathf.Abs(lVel.x)<2 && Mathf.Abs(rVel.y)<2){ //makes less likely to trigger when we want slice
           if((lVel-rVel).magnitude <.5f){
             if((lVel.z <=-1 && lVel.z >-15 )||(rVel.z <=-1 && rVel.z >-15 )&&!(timeCurr-timePrev >1)){  //single Kamehameha
-                Destroy(Instantiate(doubleKamSpell, new Vector3(0,1,1), Quaternion.identity),1);
-                  //Debug.Log("Kamehameha double!");
-                    timePrev = timeCurr;
+              GameObject a =  Instantiate(singleKamSpell, h.position + h.forward*3, Quaternion.identity);
+              Destroy(a,1);
+
             }
           }
 
         }
-
-      //}
     }
 
     public void clap(){
       if(lVel.x >=1 && lVel.x <15 &&rVel.x <=-1 && rVel.x >-15  && (timeCurr-timePrev >1)){ //checks clap
-          Destroy(Instantiate(clapSpell, new Vector3(0,1,1), Quaternion.identity),1);
-        //Debug.Log("clap!");
+        GameObject a =  Instantiate(clapSpell, h.position + h.forward*3, Quaternion.identity);
+        Destroy(a,1);
           timePrev = timeCurr;
       }
     }
