@@ -40,10 +40,10 @@ Vector3 head;
     // Start is called before the first frame update
     public void Start()
     {
-      l = leftController.position;
-      r = rightController.position;
-      lPrev = leftController.position;
-      rPrev = rightController.position;
+      l = leftController.localPosition;
+      r = rightController.localPosition;
+      lPrev = leftController.localPosition;
+      rPrev = rightController.localPosition;
       yMin  =0;
       timeCurr  = Time.realtimeSinceStartup;
       timePrev= Time.realtimeSinceStartup + 2;
@@ -61,12 +61,12 @@ Vector3 head;
         yMin = lVel.y;
       }
     }
-    
+
     // Update is called once per frame
     void LateUpdate()
     {
-      l = leftController.position;
-      r = rightController.position;
+      l = leftController.localPosition;
+      r = rightController.localPosition;
       print(); //debug statements
       rVel = (r-rPrev)/(Time.deltaTime);
       lVel = (l-lPrev)/(Time.deltaTime);
@@ -75,7 +75,6 @@ Vector3 head;
       clap();
       Kamehameha();
       Slice();
-      timeCurr = Time.realtimeSinceStartup;
 
 
     }
@@ -85,11 +84,11 @@ Vector3 head;
 
     public void Slice(){
       if(Mathf.Abs(lVel.z) <2 &&Mathf.Abs(rVel.z)<2){ //less likely to trigger when we want Kamehameha
-        if((lVel.y <=-2 && lVel.y >-15 )&&(rVel.y <=-2 && rVel.y >-15) &&(timeCurr-timePrev >1) ){ //checks double slice
+        if((lVel.y <=-2 && lVel.y >-15 )&&(rVel.y <=-2 && rVel.y >-15) ){ //checks double slice
           GameObject a =  Instantiate(spellSlice,h.position + h.forward*3, Quaternion.identity);
           Destroy(a,1);
 
-        }else if((lVel.y <=-2 && lVel.y >-15 )||(rVel.y <=-2 && rVel.y >-15 )&& (timeCurr-timePrev >1) ){  //single slice
+        }else if((lVel.y <=-2 && lVel.y >-15 )||(rVel.y <=-2 && rVel.y >-15 ) ){  //single slice
           GameObject a =  Instantiate(spellSlice, h.position + h.forward*3, Quaternion.identity);
           Destroy(a,1);
 
@@ -109,22 +108,21 @@ Vector3 head;
         }
         else */
         if(Mathf.Abs(lVel.x)<2 && Mathf.Abs(rVel.y)<2){ //makes less likely to trigger when we want slice
-          if((lVel-rVel).magnitude <.5f){
-            if((lVel.z <=-1 && lVel.z >-15 )||(rVel.z <=-1 && rVel.z >-15 )&&!(timeCurr-timePrev >1)){  //single Kamehameha
+          //if((lVel-rVel).magnitude <.5f){
+            if((lVel.z <=-1 && lVel.z >-15 )||(rVel.z <=-1 && rVel.z >-15 )){  //single Kamehameha
               GameObject a =  Instantiate(singleKamSpell, h.position + h.forward*3, Quaternion.identity);
               Destroy(a,1);
 
-            }
+            //}
           }
 
         }
     }
 
     public void clap(){
-      if(lVel.x >=1 && lVel.x <15 &&rVel.x <=-1 && rVel.x >-15  && (timeCurr-timePrev >1)){ //checks clap
+      if(lVel.x >=1 && lVel.x <15 &&rVel.x <=-1 && rVel.x >-15 ){ //checks clap
         GameObject a =  Instantiate(clapSpell, h.position + h.forward*3, Quaternion.identity);
         Destroy(a,1);
-          timePrev = timeCurr;
       }
     }
 
