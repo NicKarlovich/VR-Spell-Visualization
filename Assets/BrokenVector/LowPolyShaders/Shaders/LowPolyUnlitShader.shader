@@ -4,8 +4,9 @@
 		_Color ("Tint", Color) = (1,1,1,1)
 	}
 	SubShader {
-		Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Transparent" }
 		LOD 200
+			Cull off
 		
 		CGPROGRAM
 		#pragma surface surf Unlit vertex:vert noforwardadd novertexlights
