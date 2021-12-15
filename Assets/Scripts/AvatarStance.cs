@@ -19,7 +19,7 @@ private Vector3 rVel;
 public GameObject spellSlice; //prefab of spell, currently b&w sphere
 public GameObject clapSpell;
 public GameObject kamSpell;
-public bool enabled = true;
+public bool isAvatarMode = true;
 Vector3 ogFwd;
 
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ Vector3 ogFwd;
     // Update is called once per frame
     void LateUpdate()
     {
-       enabled = GameObject.Find("SpellSelectCanvas").GetComponent<SpellSelectionUI>().isAvatarMode;
+       isAvatarMode = GameObject.Find("EventSystem").GetComponent<SpellSelectionUI>().isAvatarMode;
     if(enabled){
       Vector3 curFwd = h.forward;
       Vector3 lPrevRot, rPrevRot;
