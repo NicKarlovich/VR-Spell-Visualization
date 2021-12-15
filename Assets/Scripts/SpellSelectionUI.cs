@@ -33,7 +33,7 @@ public class SpellSelectionUI : MonoBehaviour
     public Mesh genericCube;
     public Mesh genericSphere;
     public Mesh genericCylinder;
-    public bool isAvatarMode = true;
+    public bool isAvatarMode;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +62,7 @@ public class SpellSelectionUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isAvatarMode = GameObject.Find("XR Rig").GetComponent<AvatarStance>().isAvatarMode;
     }
 
     public void summonSpell(Spell spell)
