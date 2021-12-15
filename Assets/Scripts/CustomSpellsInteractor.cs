@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,17 +28,17 @@ public class CustomSpellsInteractor : MonoBehaviour
     public Material color2; //yellow lightning
     public Material color3; //green eldritch / grass
     public Material color4; //blue water/ice
-    public Material color5; //purple fairey
+    public Material color5; //purple fairy
     public Material color6; //black necrotic / default
 
-    public Spell eldritchStorm; 
+    public Spell eldritchStorm;
     public Spell faerieFire;
     public Spell fireBall;
 
     public Spell customSpell1;
     public Spell customSpell2;
     public Spell customSpell3;
-
+    public Text assistText; //text for UI to help what's going on :)
     Spell currentCustomSpell;
     int whatCustomSpell = 0;
 
@@ -48,6 +49,8 @@ public class CustomSpellsInteractor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      assistText = GetComponent<Canvas>().GetComponent<Text>(); // gives us text attatched to canvas
+      assistText.text = "creating spells now :)";
         creatingSpells = false;
         // taken from assignment 4
         lineRenderer = new GameObject("Line").AddComponent<LineRenderer>();
@@ -77,9 +80,12 @@ public class CustomSpellsInteractor : MonoBehaviour
 
     public void Width(InputAction.CallbackContext context)
     {
-        Debug.Log("width");
+
+
+      //  Debug.Log("width");
         if(creatingSpells)
         {
+          assistText.text = "changing width of spell";
             if(spellCreationStage == 4)
             {
                 RaycastHit hit;
@@ -164,30 +170,36 @@ public class CustomSpellsInteractor : MonoBehaviour
                 spellCreationStage = 1;
             } else if (spellCreationStage == 20)
             {
+              assistText.text = "changing color to red";
                 spellRepresentation.GetComponent<Renderer>().material = color1;
                 spellCreationStage = 21;
             } else if (spellCreationStage == 21)
             {
+              assistText.text = "changing color to yellow";
                 spellRepresentation.GetComponent<Renderer>().material = color2;
                 spellCreationStage = 22;
             }
             else if (spellCreationStage == 22)
             {
+              assistText.text = "changing color to green";
                 spellRepresentation.GetComponent<Renderer>().material = color3;
                 spellCreationStage = 23;
             }
             else if (spellCreationStage == 23)
             {
+              assistText.text = "changing color to blue";
                 spellRepresentation.GetComponent<Renderer>().material = color4;
                 spellCreationStage = 24;
             }
             else if (spellCreationStage == 24)
             {
+              assistText.text = "changing color to purple";
                 spellRepresentation.GetComponent<Renderer>().material = color5;
                 spellCreationStage = 25;
             }
             else if (spellCreationStage == 25)
             {
+              assistText.text = "changing color to black";
                 spellRepresentation.GetComponent<Renderer>().material = color6;
                 spellCreationStage = 20;
             }
@@ -200,16 +212,19 @@ public class CustomSpellsInteractor : MonoBehaviour
         {
             if (spellCreationStage == 1)
             {
+              assistText.text = "changing shape to cube";
                 spellType = "cube";
                 spellCreationStage = 4;
             }
             else if (spellCreationStage == 2)
             {
+              assistText.text = "changing shape to sphere";
                 spellType = "sphere";
                 spellCreationStage = 4;
             }
             else if (spellCreationStage == 3)
             {
+              assistText.text = "changing shape to cylinder";
                 spellType = "cylinder";
                 spellCreationStage = 4;
             } else if(spellCreationStage >= 20 && spellCreationStage <= 25)
@@ -426,7 +441,6 @@ public class CustomSpellsInteractor : MonoBehaviour
                 lineRenderer.GetComponent<LineRenderer>().enabled = false;
             }
         }
-        
+
     }
 }
-
