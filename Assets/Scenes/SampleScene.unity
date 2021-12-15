@@ -1939,7 +1939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &722410066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3593,7 +3593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1520380098
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4342,19 +4342,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: {fileID: 701728025}
   rightController: {fileID: 935581502}
-  spellSlice: {fileID: 4149077794485256010, guid: c3f17fca59ef54f9ab24cbe1827e8314,
+  h: {fileID: 2103210291}
+  spellSlice: {fileID: 7514974600265315613, guid: 2577812ea1bc3684c8227939d7c810be,
     type: 3}
-<<<<<<< Updated upstream
-  clapSpell: {fileID: 9177323649935462202, guid: 75d0bcce668a94c48b5983bac50f81a7,
-    type: 3}
-  singleKamSpell: {fileID: 7826081955525256334, guid: 495251f9b074e4c3abe6b4def039c0e2,
-    type: 3}
-  doubleKamSpell: {fileID: 500193472371061495, guid: f1c7f2aad8f33424990f6e0900ff6e79,
-    type: 3}
-=======
-  clapSpell: {fileID: 0}
-  singleKamSpell: {fileID: 0}
-  doubleKamSpell: {fileID: 0}
+  clapSpell: {fileID: 544796403}
+  kamSpell: {fileID: 516762906}
 --- !u!1 &1787718317
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,7 +4365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1787718318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4450,7 +4442,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &1800749620
 GameObject:
   m_ObjectHideFlags: 0
