@@ -64,7 +64,7 @@ public class CustomSpellsInteractor : MonoBehaviour
         spellCreationStage = 0;
 
         eldritchStorm = new Spell(color5, new Vector3(3, 6, 3), "cylinder");
-        faerieFire = new Spell(color3, new Vector3(2, 6, 2), "cube");
+        faerieFire = new Spell(color3, new Vector3(2, 6, 4), "cube");
         fireBall = new Spell(color1, new Vector3(8, 8, 8), "sphere");
     }
 
@@ -80,29 +80,7 @@ public class CustomSpellsInteractor : MonoBehaviour
     {
         if(creatingSpells)
         {
-            if (spellCreationStage == 7)
-            {
-                point1 = Vector3.zero;
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
-                {
-                    point1 = hit.point;
-                    //point1Sphere.GetComponent<MeshRenderer>().enabled = true;
-                    //point1Sphere.transform.position = point1;
-                    spellCreationStage = 8;
-                }
-            }
-            else if (spellCreationStage == 8)
-            {
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
-                {
-                    point2 = hit.point;
-                    //point2Sphere.GetComponent<MeshRenderer>().enabled = true;
-                    //point2Sphere.transform.position = point2;
-                    spellCreationStage = 9;
-                }
-            }
+            
         }
     }
     public void Width(InputAction.CallbackContext context)
@@ -130,6 +108,48 @@ public class CustomSpellsInteractor : MonoBehaviour
                     //point2Sphere.transform.position = point2;
                     spellCreationStage = 6;
                 }
+            } else if (spellCreationStage == 7)
+            {
+                point1 = Vector3.zero;
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                {
+                    point1 = hit.point;
+                    //point1Sphere.GetComponent<MeshRenderer>().enabled = true;
+                    //point1Sphere.transform.position = point1;
+                    spellCreationStage = 8;
+                }
+            } else if (spellCreationStage == 8)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                {
+                    point2 = hit.point;
+                    //point2Sphere.GetComponent<MeshRenderer>().enabled = true;
+                    //point2Sphere.transform.position = point2;
+                    spellCreationStage = 9;
+                }
+            } else if (spellCreationStage == 10)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                {
+                    point1 = hit.point;
+                    //point1Sphere.GetComponent<MeshRenderer>().enabled = true;
+                    //point1Sphere.transform.position = point1;
+                    spellCreationStage = 11;
+                }
+            }
+            else if (spellCreationStage == 11)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                {
+                    point2 = hit.point;
+                    //point2Sphere.GetComponent<MeshRenderer>().enabled = true;
+                    //point2Sphere.transform.position = point2;
+                    spellCreationStage = 12;
+                }
             }
         }
     }
@@ -140,15 +160,15 @@ public class CustomSpellsInteractor : MonoBehaviour
         {
             if(spellCreationStage == 1)
             {
-                spellSelectScript.summonSpell("sphere", 1, 0, color5);
+                spellSelectScript.summonSpell("sphere", 1, 1, 1, color5);
                 spellCreationStage = 2;
             }else if (spellCreationStage == 2)
             {
-                spellSelectScript.summonSpell("cylinder", 1, 1, color5);
+                spellSelectScript.summonSpell("cylinder", 1, 0.5f, 1, color5);
                 spellCreationStage = 3;
             } else if (spellCreationStage == 3)
             {
-                spellSelectScript.summonSpell("cube", 1, 0, color5);
+                spellSelectScript.summonSpell("cube", 1, 1, 1, color5);
                 spellCreationStage = 1;
             } else if (spellCreationStage == 20)
             {
@@ -270,26 +290,37 @@ public class CustomSpellsInteractor : MonoBehaviour
             {
                 spellCreationStage = 1;
                 Debug.Log("spell stage 0");
-                spellSelectScript.summonSpell("cube", 1, 0, color5);
+                spellSelectScript.summonSpell("cube", 1, 1, 1, color5);
 
             }
             else if (spellCreationStage == 5)
             {
-                Vector3 len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, drawingPoint1.z - drawingPoint2.z);
+                Vector3 len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, 0);
                 float scaleFactor = len.magnitude;
                 //don't want to make unecessarily small spells
                 if (scaleFactor < 1)
                 {
                     scaleFactor = 1;
                 }
-                spellRepresentation.transform.localScale = new Vector3(scaleFactor, spellType == "cylinder" ? 0.5f : scaleFactor, scaleFactor);
+                Vector3 current = spellRepresentation.transform.localScale;
+                if (spellType == "cube")
+                {
+                    spellRepresentation.transform.localScale = new Vector3(scaleFactor, current.y, current.z);
+                } else if (spellType == "cylinder")
+                {
+                    spellRepresentation.transform.localScale = new Vector3(scaleFactor, current.y, scaleFactor);
+                } else if (spellType == "sphere")
+                {
+                    spellRepresentation.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+                }
+
             }
             else if (spellCreationStage == 6)
             {
                 point1 = Vector3.zero;
                 point2 = Vector3.zero;
                 lineRenderer.GetComponent<LineRenderer>().enabled = false;
-                if (spellType == "cylinder")
+                if (spellType == "cylinder" || spellType == "cube")
                 {
                     spellCreationStage = 7;
                 }
@@ -308,12 +339,48 @@ public class CustomSpellsInteractor : MonoBehaviour
                     scaleFactor = 1;
                 }
                 Vector3 current = spellRepresentation.transform.localScale;
-                spellRepresentation.transform.localScale = new Vector3(current.x, scaleFactor / 2, current.z);
+                if (spellType == "cube")
+                {
+                    spellRepresentation.transform.localScale = new Vector3(current.x, scaleFactor, current.z);
+                }
+                if (spellType == "cylinder")
+                {
+                    spellRepresentation.transform.localScale = new Vector3(current.x, scaleFactor / 2, current.z);
+                }
             } else if(spellCreationStage == 9)
             {
+                point1 = Vector3.zero;
+                point2 = Vector3.zero;
+                lineRenderer.GetComponent<LineRenderer>().enabled = false;
+                if (spellType == "cube")
+                {
+                    spellCreationStage = 10;
+                }
+                else
+                {
+                    spellCreationStage = 20;
+                }
+            }
+            else if (spellCreationStage == 11)
+            {
+                Vector3 len = new Vector3(0, 0, drawingPoint1.z - drawingPoint2.z);
+                float scaleFactor = len.magnitude;
+                //don't want to make unecessarily small spells
+                if (scaleFactor < 1)
+                {
+                    scaleFactor = 1;
+                }
+                Vector3 current = spellRepresentation.transform.localScale;
+                spellRepresentation.transform.localScale = new Vector3(current.x, current.y, scaleFactor);
+            } else if (spellCreationStage == 12)
+            {
+                point1 = Vector3.zero;
+                point2 = Vector3.zero;
                 lineRenderer.GetComponent<LineRenderer>().enabled = false;
                 spellCreationStage = 20;
-            } else if (spellCreationStage == 30) // final one
+                
+            }
+            else if (spellCreationStage == 30) // final one
             {
                 currentCustomSpell.shape = spellType;
                 currentCustomSpell.color = spellRepresentation.GetComponent<Renderer>().material;

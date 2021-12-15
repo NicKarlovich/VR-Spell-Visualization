@@ -42,7 +42,7 @@ Vector3 ogFwd;
     // Update is called once per frame
     void LateUpdate()
     {
-       enabled = GameObject.Find("SpellSelectCanvas").GetComponent<SpellSelectionUI>().isAvatarMode;
+       enabled = GameObject.Find("EventSystem").GetComponent<SpellSelectionUI>().isAvatarMode;
     if(enabled){
       Vector3 curFwd = h.forward;
       Vector3 lPrevRot, rPrevRot;

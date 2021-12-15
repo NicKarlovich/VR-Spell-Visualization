@@ -33,7 +33,7 @@ public class SpellSelectionUI : MonoBehaviour
     public Mesh genericCube;
     public Mesh genericSphere;
     public Mesh genericCylinder;
-     public bool isAvatarMode = true;
+    public bool isAvatarMode = true;
 
     // Start is called before the first frame update
     void Start()
@@ -67,21 +67,36 @@ public class SpellSelectionUI : MonoBehaviour
 
     public void summonSpell(Spell spell)
     {
-        summonSpell(spell.shape, spell.scale.x, spell.scale.y, spell.color);
+        summonSpell(spell.shape, spell.scale.x, spell.scale.y, spell.scale.z, spell.color);
     }
 
-    public void summonSpell(string type, float width, float height, Material color)
+    public void summonSpell(string type, float width, float height, float depth, Material color)
     {
         spellRepresentation.GetComponent<MeshRenderer>().enabled = true;
         spellRepresentation.transform.localScale = new Vector3(1, 1, 1);
         if (type == "cube")
+        {
+            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(cube.GetComponent<MeshFilter>().mesh);
+        } else if (type == "sphere")
+        {
+            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(sphere.GetComponent<MeshFilter>().mesh);
+        } else if (type == "cylinder")
+        {
+            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(cylinder.GetComponent<MeshFilter>().mesh);
+        }
+        Vector3 temp = spellRepresentation.transform.localScale;
+        temp.x = temp.x * width;
+        temp.y = temp.y * height;
+        temp.z = temp.z * depth;
+        spellRepresentation.transform.localScale = temp;
+        /*if (type == "cube")
         {
             //Debug.Log("getting here?");
             //test = Resources.Load<GameObject>("GenericCube.prefab");
             //spellRepresentation.GetComponent<MeshFilter>().mesh = test.GetComponent<MeshFilter>().mesh;
             //Debug.Log(cube.GetComponent<MeshFilter>().mesh);
             spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(cube.GetComponent<MeshFilter>().mesh);
-            spellRepresentation.transform.localScale = spellRepresentation.transform.localScale * width;
+            Vector3 temp = spellRepresentation.transform.localScale;
         }
         if (type == "sphere")
         {
@@ -96,10 +111,10 @@ public class SpellSelectionUI : MonoBehaviour
             spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(cylinder.GetComponent<MeshFilter>().mesh);
             Vector3 temp = spellRepresentation.transform.localScale;
             temp.x = temp.x * width;
-            temp.y = temp.y * height / 2;  //height is divided by 2 because default cyilder is taller than I want
+            temp.y = temp.y * height;  //height is divided by 2 because default cyilder is taller than I want
             temp.z = temp.z * width;
             spellRepresentation.transform.localScale = temp;
-        }
+        }*/
         spellRepresentation.GetComponent<Renderer>().material = color;
     }
 
