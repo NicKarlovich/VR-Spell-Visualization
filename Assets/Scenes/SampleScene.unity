@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.33929682, g: 0.8224145, b: 0.930282, a: 1}
+  m_IndirectSpecularColor: {r: 0.33998796, g: 0.8203187, b: 0.9297558, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10543,7 +10543,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554022625}
   m_LocalRotation: {x: -0, y: 0.8842014, z: -0, w: 0.46710593}
-  m_LocalPosition: {x: 0, y: 0, z: 1.66}
+  m_LocalPosition: {x: 0, y: 0, z: 1.653}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 1227065353}
@@ -10563,7 +10563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 124.307, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 5.59, y: 1.88}
+  m_AnchoredPosition: {x: 5.585, y: 2.171}
   m_SizeDelta: {x: 300, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &579937274 stripped
@@ -16811,7 +16811,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -150.6}
+  m_AnchoredPosition: {x: -100, y: -150}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906526235
@@ -17476,6 +17476,7 @@ MonoBehaviour:
   rightHandController: {fileID: 1185451026}
   selectionDot: {fileID: 738021332}
   selectionCube: {fileID: 2076761962}
+  spellRepresentation: {fileID: 432499829}
   headset: {fileID: 2103210287}
   laserPointer: {fileID: 1185451027}
   moveAction:
