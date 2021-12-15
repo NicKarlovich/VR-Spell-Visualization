@@ -10,6 +10,8 @@ public class DotLogic : MonoBehaviour
     public GameObject selectionDot;
     public GameObject selectionCube;
 
+    public GameObject spellRepresentation;
+
     const float TURN_THRESH = 70f;
 
     public GameObject headset;
@@ -20,10 +22,10 @@ public class DotLogic : MonoBehaviour
 
     bool pointing;
 
-    bool facingNorth = true;
-    bool facingSouth = false;
-    bool facingEast = false;
-    bool facingWest = false;
+    public bool facingNorth = true;
+    public bool facingSouth = false;
+    public bool facingEast = false;
+    public bool facingWest = false;
 
     Vector3 sideToSide;
     Vector3 forwardAndback;
@@ -130,21 +132,26 @@ public class DotLogic : MonoBehaviour
         {
             // went outside boundries of direction we were facing, now determine where the user should be facing
             //Debug.Log((rotA <= 225 && rotA >= 135));
+            Vector3 curr = spellRepresentation.transform.localEulerAngles;
             if(rotA <= 45 || rotA >= 315)
             {
                 facingNorth = true;
+                spellRepresentation.transform.localEulerAngles = new Vector3(curr.x, 0, curr.z);
             }
             if (rotA <= 135 && rotA >= 45)
             {
                 facingEast = true;
+                spellRepresentation.transform.localEulerAngles = new Vector3(curr.x, 90, curr.z);
             }
             if (rotA <= 225 && rotA >= 135)
             {
                 facingSouth = true;
+                spellRepresentation.transform.localEulerAngles = new Vector3(curr.x, 180, curr.z);
             }
             if (rotA <= 315 && rotA >= 225)
             {
                 facingWest = true;
+                spellRepresentation.transform.localEulerAngles = new Vector3(curr.x, 270, curr.z);
             }
         }
 
