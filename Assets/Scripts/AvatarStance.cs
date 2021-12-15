@@ -19,12 +19,13 @@ private Vector3 rVel;
 public GameObject spellSlice; //prefab of spell, currently b&w sphere
 public GameObject clapSpell;
 public GameObject kamSpell;
-public bool enabled = true;
+public bool isAvatarMode;
 Vector3 ogFwd;
 
     // Start is called before the first frame update
     public void Start()
     {
+      isAvatarMode = true;
       l = leftController.localPosition;
       r = rightController.localPosition;
       lPrev = leftController.localPosition;
@@ -42,8 +43,8 @@ Vector3 ogFwd;
     // Update is called once per frame
     void LateUpdate()
     {
-       enabled = GameObject.Find("EventSystem").GetComponent<SpellSelectionUI>().isAvatarMode;
-    if(enabled){
+       //enabled = GameObject.Find("EventSystem").GetComponent<SpellSelectionUI>().isAvatarMode;
+    if(isAvatarMode){
       Vector3 curFwd = h.forward;
       Vector3 lPrevRot, rPrevRot;
       curFwd = new Vector3(curFwd.x, 0, curFwd.z);
@@ -118,6 +119,10 @@ Vector3 ogFwd;
   //  if(Vector3.Dot(lVel, rVel)<=.8f){ //checks clap independent of direction
         Destroy(Instantiate(clapSpell, h.position + h.forward*3, Quaternion.identity),1);
       }
+    }
+
+    public void toggle(){
+      isAvatarMode = !isAvatarMode;
     }
 
 }
