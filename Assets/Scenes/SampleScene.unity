@@ -17639,6 +17639,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
     m_Reference: {fileID: -5593942809360346633, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+  spellSelectionScript: {fileID: 2017743674}
 --- !u!1 &1227065352
 GameObject:
   m_ObjectHideFlags: 0
@@ -18130,18 +18131,6 @@ MonoBehaviour:
   spellSelectScript: {fileID: 2017743674}
   directionScript: {fileID: 1185451030}
   spellRepresentation: {fileID: 432499829}
-  heightAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Height
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 4432dbdc-322a-476a-b447-a6a5fe2068e0
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-    m_Reference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
   widthAction:
     m_UseReference: 1
     m_Action:

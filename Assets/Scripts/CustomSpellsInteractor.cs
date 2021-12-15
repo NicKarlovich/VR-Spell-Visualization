@@ -43,6 +43,7 @@ public class CustomSpellsInteractor : MonoBehaviour
 
     int spellCreationStage;
     string spellType;
+    bool isAvatarMode;
 
     // Start is called before the first frame update
     void Start()
@@ -235,185 +236,197 @@ public class CustomSpellsInteractor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (creatingSpells)
+        isAvatarMode = spellSelectScript.isAvatarMode;
+        if (!isAvatarMode)
         {
-            RaycastHit hit;
-            Vector3 drawingPoint1 = Vector3.zero;
-            Vector3 drawingPoint2 = Vector3.zero;
-            bool north = directionScript.facingNorth;
-            bool east = directionScript.facingEast;
-            bool south = directionScript.facingSouth;
-            bool west = directionScript.facingWest;
-
-            if (point1 != Vector3.zero)
+            if (creatingSpells)
             {
-                drawingPoint1 = point1;
-                
-                if (point2 != Vector3.zero)
+                RaycastHit hit;
+                Vector3 drawingPoint1 = Vector3.zero;
+                Vector3 drawingPoint2 = Vector3.zero;
+                bool north = directionScript.facingNorth;
+                bool east = directionScript.facingEast;
+                bool south = directionScript.facingSouth;
+                bool west = directionScript.facingWest;
+
+                if (point1 != Vector3.zero)
                 {
-                    drawingPoint2 = point2;
+                    drawingPoint1 = point1;
+
+                    if (point2 != Vector3.zero)
+                    {
+                        drawingPoint2 = point2;
+                    }
+                    else
+                    {
+
+                        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                        {
+                            drawingPoint2 = hit.point;
+                        }
+                        else
+                        {
+                            drawingPoint2 = Vector3.zero;
+                        }
+                        if (drawingPoint1 != Vector3.zero && drawingPoint2 != Vector3.zero)
+                        {
+                            lineRenderer.GetComponent<LineRenderer>().enabled = true;
+                            lineRenderer.SetPosition(0, drawingPoint1); //x,y and z position of the starting point of the line
+                            lineRenderer.SetPosition(1, drawingPoint2); //x,y and z position of the end point of the line
+                        }
+                        else
+                        {
+                            lineRenderer.GetComponent<LineRenderer>().enabled = false;
+                        }
+                    }
                 }
                 else
                 {
-                    
-                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                    //don't do anything
+                }
+                Debug.Log(spellCreationStage);
+                if (spellCreationStage == 0)
+                {
+                    spellCreationStage = 1;
+                    Debug.Log("spell stage 0");
+                    spellSelectScript.summonSpell("cube", 1, 1, 1, color5);
+
+                }
+                else if (spellCreationStage == 5)
+                {
+                    Vector3 len = Vector3.zero;
+                    if (north || south)
                     {
-                        drawingPoint2 = hit.point;
+                        len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, 0);
+                    }
+                    else if (east || west)
+                    {
+                        len = new Vector3(0, 0, drawingPoint1.z - drawingPoint2.z);
+                    }
+
+                    float scaleFactor = len.magnitude;
+                    //don't want to make unecessarily small spells
+                    if (scaleFactor < 1)
+                    {
+                        scaleFactor = 1;
+                    }
+                    Vector3 current = spellRepresentation.transform.localScale;
+                    if (spellType == "cube")
+                    {
+                        spellRepresentation.transform.localScale = new Vector3(scaleFactor, current.y, current.z);
+                    }
+                    else if (spellType == "cylinder")
+                    {
+                        spellRepresentation.transform.localScale = new Vector3(scaleFactor, current.y, scaleFactor);
+                    }
+                    else if (spellType == "sphere")
+                    {
+                        spellRepresentation.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+                    }
+
+                }
+                else if (spellCreationStage == 6)
+                {
+                    point1 = Vector3.zero;
+                    point2 = Vector3.zero;
+                    lineRenderer.GetComponent<LineRenderer>().enabled = false;
+                    if (spellType == "cylinder" || spellType == "cube")
+                    {
+                        spellCreationStage = 7;
                     }
                     else
                     {
-                        drawingPoint2 = Vector3.zero;
-                    }
-                    if (drawingPoint1 != Vector3.zero && drawingPoint2 != Vector3.zero)
-                    {
-                        lineRenderer.GetComponent<LineRenderer>().enabled = true;
-                        lineRenderer.SetPosition(0, drawingPoint1); //x,y and z position of the starting point of the line
-                        lineRenderer.SetPosition(1, drawingPoint2); //x,y and z position of the end point of the line
-                    }
-                    else
-                    {
-                        lineRenderer.GetComponent<LineRenderer>().enabled = false;
+                        spellCreationStage = 20;
                     }
                 }
+                else if (spellCreationStage == 8)
+                {
+                    Vector3 len = new Vector3(0, drawingPoint1.y - drawingPoint2.y, 0);
+                    float scaleFactor = len.magnitude;
+                    //don't want to make unecessarily small spells
+                    if (scaleFactor < 1)
+                    {
+                        scaleFactor = 1;
+                    }
+                    Vector3 current = spellRepresentation.transform.localScale;
+                    if (spellType == "cube")
+                    {
+                        spellRepresentation.transform.localScale = new Vector3(current.x, scaleFactor, current.z);
+                    }
+                    if (spellType == "cylinder")
+                    {
+                        spellRepresentation.transform.localScale = new Vector3(current.x, scaleFactor / 2, current.z);
+                    }
+                }
+                else if (spellCreationStage == 9)
+                {
+                    point1 = Vector3.zero;
+                    point2 = Vector3.zero;
+                    lineRenderer.GetComponent<LineRenderer>().enabled = false;
+                    if (spellType == "cube")
+                    {
+                        spellCreationStage = 10;
+                    }
+                    else
+                    {
+                        spellCreationStage = 20;
+                    }
+                }
+                else if (spellCreationStage == 11)
+                {
+                    Vector3 len = Vector3.zero;
+                    if (north || south)
+                    {
+                        len = new Vector3(0, 0, drawingPoint1.z - drawingPoint2.z);
+                    }
+                    else if (east || west)
+                    {
+                        len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, 0);
+                    }
+                    float scaleFactor = len.magnitude;
+                    //don't want to make unecessarily small spells
+                    if (scaleFactor < 1)
+                    {
+                        scaleFactor = 1;
+                    }
+                    Vector3 current = spellRepresentation.transform.localScale;
+                    spellRepresentation.transform.localScale = new Vector3(current.x, current.y, scaleFactor);
+                }
+                else if (spellCreationStage == 12)
+                {
+                    point1 = Vector3.zero;
+                    point2 = Vector3.zero;
+                    lineRenderer.GetComponent<LineRenderer>().enabled = false;
+                    spellCreationStage = 20;
+
+                }
+                else if (spellCreationStage == 30) // final one
+                {
+                    currentCustomSpell.shape = spellType;
+                    currentCustomSpell.color = spellRepresentation.GetComponent<Renderer>().material;
+                    currentCustomSpell.scale = spellRepresentation.transform.localScale;
+                    if (whatCustomSpell == 1)
+                    {
+                        customSpell1 = currentCustomSpell;
+                    }
+                    else if (whatCustomSpell == 2)
+                    {
+                        customSpell2 = currentCustomSpell;
+                    }
+                    else if (whatCustomSpell == 3)
+                    {
+                        customSpell3 = currentCustomSpell;
+                    }
+                    stopSpellCreation();
+                }
+
             }
             else
             {
-                //don't do anything
-            }
-            Debug.Log(spellCreationStage);
-            if (spellCreationStage == 0)
-            {
-                spellCreationStage = 1;
-                Debug.Log("spell stage 0");
-                spellSelectScript.summonSpell("cube", 1, 1, 1, color5);
-
-            }
-            else if (spellCreationStage == 5)
-            {
-                Vector3 len = Vector3.zero;
-                if (north || south)
-                {
-                    len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, 0);
-                } else if (east || west)
-                {
-                    len = new Vector3(0, 0, drawingPoint1.z - drawingPoint2.z);
-                }
-                
-                float scaleFactor = len.magnitude;
-                //don't want to make unecessarily small spells
-                if (scaleFactor < 1)
-                {
-                    scaleFactor = 1;
-                }
-                Vector3 current = spellRepresentation.transform.localScale;
-                if (spellType == "cube")
-                {
-                    spellRepresentation.transform.localScale = new Vector3(scaleFactor, current.y, current.z);
-                } else if (spellType == "cylinder")
-                {
-                    spellRepresentation.transform.localScale = new Vector3(scaleFactor, current.y, scaleFactor);
-                } else if (spellType == "sphere")
-                {
-                    spellRepresentation.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
-                }
-
-            }
-            else if (spellCreationStage == 6)
-            {
-                point1 = Vector3.zero;
-                point2 = Vector3.zero;
                 lineRenderer.GetComponent<LineRenderer>().enabled = false;
-                if (spellType == "cylinder" || spellType == "cube")
-                {
-                    spellCreationStage = 7;
-                }
-                else
-                {
-                    spellCreationStage = 20;
-                }
             }
-            else if (spellCreationStage == 8)
-            {
-                Vector3 len = new Vector3(0, drawingPoint1.y - drawingPoint2.y, 0);
-                float scaleFactor = len.magnitude;
-                //don't want to make unecessarily small spells
-                if (scaleFactor < 1)
-                {
-                    scaleFactor = 1;
-                }
-                Vector3 current = spellRepresentation.transform.localScale;
-                if (spellType == "cube")
-                {
-                    spellRepresentation.transform.localScale = new Vector3(current.x, scaleFactor, current.z);
-                }
-                if (spellType == "cylinder")
-                {
-                    spellRepresentation.transform.localScale = new Vector3(current.x, scaleFactor / 2, current.z);
-                }
-            } else if(spellCreationStage == 9)
-            {
-                point1 = Vector3.zero;
-                point2 = Vector3.zero;
-                lineRenderer.GetComponent<LineRenderer>().enabled = false;
-                if (spellType == "cube")
-                {
-                    spellCreationStage = 10;
-                }
-                else
-                {
-                    spellCreationStage = 20;
-                }
-            }
-            else if (spellCreationStage == 11)
-            {
-                Vector3 len = Vector3.zero;
-                if (north || south)
-                {
-                    len = new Vector3(0, 0, drawingPoint1.z - drawingPoint2.z); 
-                }
-                else if (east || west)
-                {
-                    len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, 0);
-                }
-                float scaleFactor = len.magnitude;
-                //don't want to make unecessarily small spells
-                if (scaleFactor < 1)
-                {
-                    scaleFactor = 1;
-                }
-                Vector3 current = spellRepresentation.transform.localScale;
-                spellRepresentation.transform.localScale = new Vector3(current.x, current.y, scaleFactor);
-            } else if (spellCreationStage == 12)
-            {
-                point1 = Vector3.zero;
-                point2 = Vector3.zero;
-                lineRenderer.GetComponent<LineRenderer>().enabled = false;
-                spellCreationStage = 20;
-                
-            }
-            else if (spellCreationStage == 30) // final one
-            {
-                currentCustomSpell.shape = spellType;
-                currentCustomSpell.color = spellRepresentation.GetComponent<Renderer>().material;
-                currentCustomSpell.scale = spellRepresentation.transform.localScale;
-                if(whatCustomSpell == 1)
-                {
-                    customSpell1 = currentCustomSpell;
-                } else if (whatCustomSpell == 2)
-                {
-                    customSpell2 = currentCustomSpell;
-                } else if (whatCustomSpell == 3)
-                {
-                    customSpell3 = currentCustomSpell;
-                }
-                stopSpellCreation();
-            }
-            
         }
-        else
-        {
-            lineRenderer.GetComponent<LineRenderer>().enabled = false;
-        }
+        
     }
 }
 

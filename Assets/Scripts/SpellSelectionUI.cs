@@ -62,7 +62,6 @@ public class SpellSelectionUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void summonSpell(Spell spell)
@@ -89,32 +88,6 @@ public class SpellSelectionUI : MonoBehaviour
         temp.y = temp.y * height;
         temp.z = temp.z * depth;
         spellRepresentation.transform.localScale = temp;
-        /*if (type == "cube")
-        {
-            //Debug.Log("getting here?");
-            //test = Resources.Load<GameObject>("GenericCube.prefab");
-            //spellRepresentation.GetComponent<MeshFilter>().mesh = test.GetComponent<MeshFilter>().mesh;
-            //Debug.Log(cube.GetComponent<MeshFilter>().mesh);
-            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(cube.GetComponent<MeshFilter>().mesh);
-            Vector3 temp = spellRepresentation.transform.localScale;
-        }
-        if (type == "sphere")
-        {
-            //test = Resources.Load<GameObject>("GenericSphere.prefab");
-            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(sphere.GetComponent<MeshFilter>().mesh);
-            spellRepresentation.transform.localScale = spellRepresentation.transform.localScale * width;
-        }
-        if (type == "cylinder")
-        {
-            //Debug.Log("getting here?");
-            //test = Resources.Load<GameObject>("GenericCylinder.prefab");
-            spellRepresentation.GetComponent<MeshFilter>().mesh = Instantiate(cylinder.GetComponent<MeshFilter>().mesh);
-            Vector3 temp = spellRepresentation.transform.localScale;
-            temp.x = temp.x * width;
-            temp.y = temp.y * height;  //height is divided by 2 because default cyilder is taller than I want
-            temp.z = temp.z * width;
-            spellRepresentation.transform.localScale = temp;
-        }*/
         spellRepresentation.GetComponent<Renderer>().material = color;
     }
 
@@ -125,60 +98,63 @@ public class SpellSelectionUI : MonoBehaviour
 
     public void buttonCallBack(Button buttonPressed)
     {
-
-        if (buttonPressed == button1)
+        if (!isAvatarMode)
         {
-            Debug.Log("Button 1");
-            summonSpell(customSpellsScript.eldritchStorm);
+            if (buttonPressed == button1)
+            {
+                Debug.Log("Button 1");
+                summonSpell(customSpellsScript.eldritchStorm);
+            }
+            if (buttonPressed == button2)
+            {
+                Debug.Log("Button 2");
+                summonSpell(customSpellsScript.faerieFire);
+            }
+            if (buttonPressed == button3)
+            {
+                Debug.Log("Button 3");
+                summonSpell(customSpellsScript.fireBall);
+            }
+            if (buttonPressed == customButton1)
+            {
+                Debug.Log("Custom Button 1");
+                summonSpell(customSpellsScript.customSpell1);
+                //summonSpell("cylinder", 2, 2);
+            }
+            if (buttonPressed == customButton2)
+            {
+                Debug.Log("Custom Button 2");
+                summonSpell(customSpellsScript.customSpell2);
+                //summonSpell("cube", 4, 0);
+            }
+            if (buttonPressed == customButton3)
+            {
+                Debug.Log("Custom Button 3");
+                summonSpell(customSpellsScript.customSpell3);
+                //summonSpell("sphere", 3, 0);
+            }
+            if (buttonPressed == clearButton)
+            {
+                Debug.Log("Cleared Spell");
+                clearSpell();
+            }
+            if (buttonPressed == createCustomButton1)
+            {
+                Debug.Log("Create Custom Button 1");
+                customSpellsScript.startSpellCreation(0, 1);
+            }
+            if (buttonPressed == createCustomButton2)
+            {
+                Debug.Log("Create Custom Button 2");
+                customSpellsScript.startSpellCreation(0, 2);
+            }
+            if (buttonPressed == createCustomButton3)
+            {
+                Debug.Log("Create Custom Button 3");
+                customSpellsScript.startSpellCreation(0, 3);
+            }
         }
-        if (buttonPressed == button2)
-        {
-            Debug.Log("Button 2");
-            summonSpell(customSpellsScript.faerieFire);
-        }
-        if (buttonPressed == button3)
-        {
-            Debug.Log("Button 3");
-            summonSpell(customSpellsScript.fireBall);
-        }
-        if (buttonPressed == customButton1)
-        {
-            Debug.Log("Custom Button 1");
-            summonSpell(customSpellsScript.customSpell1);
-            //summonSpell("cylinder", 2, 2);
-        }
-        if (buttonPressed == customButton2)
-        {
-            Debug.Log("Custom Button 2");
-            summonSpell(customSpellsScript.customSpell2);
-            //summonSpell("cube", 4, 0);
-        }
-        if (buttonPressed == customButton3)
-        {
-            Debug.Log("Custom Button 3");
-            summonSpell(customSpellsScript.customSpell3);
-            //summonSpell("sphere", 3, 0);
-        }
-        if (buttonPressed == clearButton)
-        {
-            Debug.Log("Cleared Spell");
-            clearSpell();
-        }
-        if (buttonPressed == createCustomButton1)
-        {
-            Debug.Log("Create Custom Button 1");
-            customSpellsScript.startSpellCreation(0, 1);
-        }
-        if (buttonPressed == createCustomButton2)
-        {
-            Debug.Log("Create Custom Button 2");
-            customSpellsScript.startSpellCreation(0, 2);
-        }
-        if (buttonPressed == createCustomButton3)
-        {
-            Debug.Log("Create Custom Button 3");
-            customSpellsScript.startSpellCreation(0, 3);
-        }if(buttonPressed == gameModeButton)
+        if(buttonPressed == gameModeButton)
         {
           isAvatarMode = false;
         }
