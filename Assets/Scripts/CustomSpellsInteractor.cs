@@ -18,7 +18,6 @@ public class CustomSpellsInteractor : MonoBehaviour
 
     public GameObject spellRepresentation;
 
-    public InputActionProperty heightAction;
     public InputActionProperty widthAction;
 
     public InputActionProperty nextShapeAction;
@@ -58,7 +57,6 @@ public class CustomSpellsInteractor : MonoBehaviour
         lineRenderer.positionCount = 2;
         lineRenderer.useWorldSpace = true;
 
-        heightAction.action.performed += Height;
         widthAction.action.performed += Width;
         nextShapeAction.action.performed += Next;
         selectAction.action.performed += Select;
@@ -71,19 +69,11 @@ public class CustomSpellsInteractor : MonoBehaviour
 
     private void OnDestroy()
     {
-        heightAction.action.performed -= Height;
         widthAction.action.performed -= Width;
         nextShapeAction.action.performed -= Next;
         selectAction.action.performed -= Select;
     }
 
-    public void Height(InputAction.CallbackContext context)
-    {
-        if(creatingSpells)
-        {
-            
-        }
-    }
     public void Width(InputAction.CallbackContext context)
     {
         Debug.Log("width");
