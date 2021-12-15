@@ -10,7 +10,6 @@ public class AvatarStance : MonoBehaviour
 public Transform leftController;
 public Transform rightController;
 public Transform h;
-public InputActionProperty headsetRot;
 private Vector3 l;
 private Vector3 r;
 private Vector3 lPrev;
@@ -19,12 +18,10 @@ private Vector3 lVel;
 private Vector3 rVel;
 public GameObject spellSlice; //prefab of spell, currently b&w sphere
 public GameObject clapSpell;
-public GameObject singleKamSpell;
-public GameObject doubleKamSpell;
+public GameObject kamSpell;
 float timeCurr;
 float timePrev;
   float yMin;
-Vector3 head;
   /*TODO:
     - check if velocity of left or right controller has following pattern:
     ((need threshold, test via ))
@@ -47,19 +44,13 @@ Vector3 head;
       yMin  =0;
       timeCurr  = Time.realtimeSinceStartup;
       timePrev= Time.realtimeSinceStartup + 2;
-      headsetRot.action.performed +=Headset;
 
-    }
-    private void OnDestroy()
-    {
-        headsetRot.action.performed -=Headset;
     }
 
     public void print(){  //debug statements here
-
-      if(lVel.y <yMin && lVel.y >-15){
-        yMin = lVel.y;
-      }
+      Debug.Log("left controller pos: " + l.x + " " + l.y + " " + l.z);
+      Debug.Log("right controller pos: " + r.x + " " + r.y + " " + r.z);
+      Debug.Log("headset rotation: " + h.rotation.x +" "+ h.rotation.y + " "+ h.rotation.z);
     }
 
     // Update is called once per frame
@@ -67,19 +58,19 @@ Vector3 head;
     {
       l = leftController.localPosition;
       r = rightController.localPosition;
+       l =  Quaternion.AngleAxis(h.rotation.x, Vector3.up) * l;
+        r =  Quaternion.AngleAxis(h.rotation.x, Vector3.up) * r;
+
       print(); //debug statements
       rVel = (r-rPrev)/(Time.deltaTime);
       lVel = (l-lPrev)/(Time.deltaTime);
       lPrev = l;
       rPrev = r;
       clap();
-      Kamehameha();
       Slice();
+      Kamehameha();
 
 
-    }
-    public void Headset(InputAction.CallbackContext context){
-      head = context.action.ReadValue<Vector3>();
     }
 
     public void Slice(){
@@ -100,20 +91,12 @@ Vector3 head;
     }
 
     public void Kamehameha(){
-    /*  if(lVel.z*-1 >lVel.y|| rVel.z*-1>rVel.y){
-        if((lVel.z <=-3.5 && lVel.z >-15 )&&(rVel.z <=-3.5 && rVel.z >-15)&& (timeCurr-timePrev >1) ){ //checks double Kamehameha
-            Destroy(Instantiate(doubleKamSpell, new Vector3(0,1,1), Quaternion.identity),1);
-            //Debug.Log("Kamehameha double");
-              timePrev = timeCurr;
-        }
-        else */
         if(Mathf.Abs(lVel.x)<2 && Mathf.Abs(rVel.y)<2){ //makes less likely to trigger when we want slice
-          //if((lVel-rVel).magnitude <.5f){
+          if((lVel-rVel).magnitude <.5f){
             if((lVel.z <=-1 && lVel.z >-15 )||(rVel.z <=-1 && rVel.z >-15 )){  //single Kamehameha
-              GameObject a =  Instantiate(singleKamSpell, h.position + h.forward*3, Quaternion.identity);
+              GameObject a =  Instantiate(kamSpell, h.position + h.forward*3, Quaternion.identity);
               Destroy(a,1);
-
-            //}
+            }
           }
 
         }
