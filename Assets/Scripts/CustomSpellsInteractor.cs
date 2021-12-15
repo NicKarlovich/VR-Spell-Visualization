@@ -30,7 +30,7 @@ public class CustomSpellsInteractor : MonoBehaviour
     public Material color5; //purple fairey
     public Material color6; //black necrotic / default
 
-    public Spell eldritchStorm; 
+    public Spell eldritchStorm;
     public Spell faerieFire;
     public Spell fireBall;
 
@@ -107,7 +107,6 @@ public class CustomSpellsInteractor : MonoBehaviour
     }
     public void Width(InputAction.CallbackContext context)
     {
-        Debug.Log("width");
         if(creatingSpells)
         {
             if(spellCreationStage == 4)
@@ -229,18 +228,18 @@ public class CustomSpellsInteractor : MonoBehaviour
             RaycastHit hit;
             Vector3 drawingPoint1 = Vector3.zero;
             Vector3 drawingPoint2 = Vector3.zero;
-             
+
             if (point1 != Vector3.zero)
             {
                 drawingPoint1 = point1;
-                
+
                 if (point2 != Vector3.zero)
                 {
                     drawingPoint2 = point2;
                 }
                 else
                 {
-                    
+
                     if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                     {
                         drawingPoint2 = hit.point;
@@ -265,11 +264,11 @@ public class CustomSpellsInteractor : MonoBehaviour
             {
                 //don't do anything
             }
-            Debug.Log(spellCreationStage);
+            //Debug.Log(spellCreationStage);
             if (spellCreationStage == 0)
             {
                 spellCreationStage = 1;
-                Debug.Log("spell stage 0");
+              //  Debug.Log("spell stage 0");
                 spellSelectScript.summonSpell("cube", 1, 0, color5);
 
             }
@@ -330,7 +329,7 @@ public class CustomSpellsInteractor : MonoBehaviour
                 }
                 stopSpellCreation();
             }
-            
+
         }
         else
         {
@@ -338,4 +337,3 @@ public class CustomSpellsInteractor : MonoBehaviour
         }
     }
 }
-

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SpellSelectionUI : MonoBehaviour
 {
     public CustomSpellsInteractor customSpellsScript;
-
+    public GameObject canvas; //added so we can interact with UI and whatnot
     public Button button1;
     public Button button2;
     public Button button3;
@@ -113,59 +113,68 @@ public class SpellSelectionUI : MonoBehaviour
 
         if (buttonPressed == button1)
         {
-            Debug.Log("Button 1");
+          //  Debug.Log("Button 1");
             summonSpell(customSpellsScript.eldritchStorm);
         }
         if (buttonPressed == button2)
         {
-            Debug.Log("Button 2");
+            //Debug.Log("Button 2");
             summonSpell(customSpellsScript.faerieFire);
         }
         if (buttonPressed == button3)
         {
-            Debug.Log("Button 3");
+          //  Debug.Log("Button 3");
             summonSpell(customSpellsScript.fireBall);
         }
         if (buttonPressed == customButton1)
         {
-            Debug.Log("Custom Button 1");
+          //  Debug.Log("Custom Button 1");
             summonSpell(customSpellsScript.customSpell1);
             //summonSpell("cylinder", 2, 2);
         }
         if (buttonPressed == customButton2)
         {
-            Debug.Log("Custom Button 2");
+          //  Debug.Log("Custom Button 2");
             summonSpell(customSpellsScript.customSpell2);
             //summonSpell("cube", 4, 0);
         }
         if (buttonPressed == customButton3)
         {
-            Debug.Log("Custom Button 3");
+          //  Debug.Log("Custom Button 3");
             summonSpell(customSpellsScript.customSpell3);
             //summonSpell("sphere", 3, 0);
         }
         if (buttonPressed == clearButton)
         {
-            Debug.Log("Cleared Spell");
+          //  Debug.Log("Cleared Spell");
             clearSpell();
         }
         if (buttonPressed == createCustomButton1)
         {
-            Debug.Log("Create Custom Button 1");
+          //  Debug.Log("Create Custom Button 1");
             customSpellsScript.startSpellCreation(0, 1);
         }
         if (buttonPressed == createCustomButton2)
         {
-            Debug.Log("Create Custom Button 2");
+          //  Debug.Log("Create Custom Button 2");
             customSpellsScript.startSpellCreation(0, 2);
         }
         if (buttonPressed == createCustomButton3)
         {
-            Debug.Log("Create Custom Button 3");
+          //  Debug.Log("Create Custom Button 3");
             customSpellsScript.startSpellCreation(0, 3);
         }if(buttonPressed == gameModeButton)
         {
-          isAvatarMode = false;
+          if(isAvatarMode){
+            gameModeButton.GetComponent<Text>().text = "Avatar Mode Off";
+            Debug.Log("button pressed: off!");
+          }else{
+            gameModeButton.GetComponent<Text>().text = "Avatar Mode On";
+              Debug.Log("button pressed: on!");
+          }
+          isAvatarMode = !isAvatarMode;
+
+
         }
 
 
