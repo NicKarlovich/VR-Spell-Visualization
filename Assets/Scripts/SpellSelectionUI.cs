@@ -20,6 +20,8 @@ public class SpellSelectionUI : MonoBehaviour
 
     public Button clearButton;
 
+    public Button gameModeButton;
+
     public GameObject spellRepresentation;
 
     public GameObject cube;
@@ -31,6 +33,7 @@ public class SpellSelectionUI : MonoBehaviour
     public Mesh genericCube;
     public Mesh genericSphere;
     public Mesh genericCylinder;
+     public bool isAvatarMode = true;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,7 @@ public class SpellSelectionUI : MonoBehaviour
         createCustomButton2.onClick.AddListener(() => buttonCallBack(createCustomButton2));
         createCustomButton3.onClick.AddListener(() => buttonCallBack(createCustomButton3));
         clearButton.onClick.AddListener(() => buttonCallBack(clearButton));
+        gameModeButton.onClick.AddListener(() => buttonCallBack(gameModeButton));
 
         genericCube = Instantiate(cube.GetComponent<Mesh>());
         genericSphere = Instantiate(sphere.GetComponent<Mesh>());
@@ -58,7 +62,7 @@ public class SpellSelectionUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void summonSpell(Spell spell)
@@ -106,7 +110,7 @@ public class SpellSelectionUI : MonoBehaviour
 
     public void buttonCallBack(Button buttonPressed)
     {
-        
+
         if (buttonPressed == button1)
         {
             Debug.Log("Button 1");
@@ -159,8 +163,11 @@ public class SpellSelectionUI : MonoBehaviour
         {
             Debug.Log("Create Custom Button 3");
             customSpellsScript.startSpellCreation(0, 3);
+        }if(buttonPressed == gameModeButton)
+        {
+          isAvatarMode = false;
         }
 
-        
+
     }
 }
