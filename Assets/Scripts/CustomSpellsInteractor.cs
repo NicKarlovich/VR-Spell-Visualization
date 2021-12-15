@@ -14,6 +14,7 @@ public class CustomSpellsInteractor : MonoBehaviour
     public GameObject point2Sphere;
 
     public SpellSelectionUI spellSelectScript;
+    public DotLogic directionScript;
 
     public GameObject spellRepresentation;
 
@@ -249,7 +250,11 @@ public class CustomSpellsInteractor : MonoBehaviour
             RaycastHit hit;
             Vector3 drawingPoint1 = Vector3.zero;
             Vector3 drawingPoint2 = Vector3.zero;
-             
+            bool north = directionScript.facingNorth;
+            bool east = directionScript.facingEast;
+            bool south = directionScript.facingSouth;
+            bool west = directionScript.facingWest;
+
             if (point1 != Vector3.zero)
             {
                 drawingPoint1 = point1;
@@ -295,7 +300,15 @@ public class CustomSpellsInteractor : MonoBehaviour
             }
             else if (spellCreationStage == 5)
             {
-                Vector3 len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, 0);
+                Vector3 len = Vector3.zero;
+                if (north || south)
+                {
+                    len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, 0);
+                } else if (east || west)
+                {
+                    len = new Vector3(0, 0, drawingPoint1.z - drawingPoint2.z);
+                }
+                
                 float scaleFactor = len.magnitude;
                 //don't want to make unecessarily small spells
                 if (scaleFactor < 1)
@@ -363,7 +376,15 @@ public class CustomSpellsInteractor : MonoBehaviour
             }
             else if (spellCreationStage == 11)
             {
-                Vector3 len = new Vector3(0, 0, drawingPoint1.z - drawingPoint2.z);
+                Vector3 len = Vector3.zero;
+                if (north || south)
+                {
+                    len = new Vector3(0, 0, drawingPoint1.z - drawingPoint2.z); 
+                }
+                else if (east || west)
+                {
+                    len = new Vector3(drawingPoint1.x - drawingPoint2.x, 0, 0);
+                }
                 float scaleFactor = len.magnitude;
                 //don't want to make unecessarily small spells
                 if (scaleFactor < 1)

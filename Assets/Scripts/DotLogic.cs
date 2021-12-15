@@ -22,10 +22,10 @@ public class DotLogic : MonoBehaviour
 
     bool pointing;
 
-    bool facingNorth = true;
-    bool facingSouth = false;
-    bool facingEast = false;
-    bool facingWest = false;
+    public bool facingNorth = true;
+    public bool facingSouth = false;
+    public bool facingEast = false;
+    public bool facingWest = false;
 
     Vector3 sideToSide;
     Vector3 forwardAndback;

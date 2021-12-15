@@ -17321,6 +17321,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047860959}
   m_CullTransparentMesh: 1
+--- !u!1 &1090112117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1090112121}
+  - component: {fileID: 1090112120}
+  - component: {fileID: 1090112119}
+  - component: {fileID: 1090112118}
+  m_Layer: 0
+  m_Name: Plane (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &1090112118
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090112117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1090112119
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090112117}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6d83814cae8aae045ad97dca9f4d5e7c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1090112120
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090112117}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1090112121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090112117}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 7.827, y: 6.98, z: -6.021}
+  m_LocalScale: {x: 0.21, y: 1, z: 0.112}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!23 &1168334447 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3738407368887136952, guid: 75d0bcce668a94c48b5983bac50f81a7,
@@ -17479,6 +17575,10 @@ MonoBehaviour:
   spellRepresentation: {fileID: 432499829}
   headset: {fileID: 2103210287}
   laserPointer: {fileID: 1185451027}
+  facingNorth: 1
+  facingSouth: 0
+  facingEast: 0
+  facingWest: 0
   moveAction:
     m_UseReference: 1
     m_Action:
@@ -17680,12 +17780,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d36bfaf77a6c94896980f4b7dacb125e, type: 2}
+      objectReference: {fileID: 2100000, guid: 2ed5ac5bee18ffe4396d871af249a6b7, type: 2}
     - target: {fileID: 6930198311811319463, guid: fe10362ef9c411649905ae5bcb0b5181,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 152f703ae05d271408968204887a368c, type: 2}
+    - target: {fileID: 6930198312275333573, guid: fe10362ef9c411649905ae5bcb0b5181,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d83814cae8aae045ad97dca9f4d5e7c, type: 2}
+    - target: {fileID: 6930198312424834442, guid: fe10362ef9c411649905ae5bcb0b5181,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d83814cae8aae045ad97dca9f4d5e7c, type: 2}
+    - target: {fileID: 6930198312895177268, guid: fe10362ef9c411649905ae5bcb0b5181,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d83814cae8aae045ad97dca9f4d5e7c, type: 2}
+    - target: {fileID: 6930198313296911305, guid: fe10362ef9c411649905ae5bcb0b5181,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d83814cae8aae045ad97dca9f4d5e7c, type: 2}
     - target: {fileID: 8946477247108384219, guid: fe10362ef9c411649905ae5bcb0b5181,
         type: 3}
       propertyPath: m_Name
@@ -18008,6 +18128,7 @@ MonoBehaviour:
   point1Sphere: {fileID: 1787718317}
   point2Sphere: {fileID: 1520380097}
   spellSelectScript: {fileID: 2017743674}
+  directionScript: {fileID: 1185451030}
   spellRepresentation: {fileID: 432499829}
   heightAction:
     m_UseReference: 1
@@ -24813,6 +24934,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Generic Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 3523489778765734775, guid: bd9fce2df692c9b488f81831f0cd921d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd9fce2df692c9b488f81831f0cd921d, type: 3}
 --- !u!1001 &7514974599754585831
@@ -24896,6 +25022,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Generic Cylinder
+      objectReference: {fileID: 0}
+    - target: {fileID: 7514974600265315613, guid: 2577812ea1bc3684c8227939d7c810be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -56195101634492897, guid: 2577812ea1bc3684c8227939d7c810be, type: 3}
