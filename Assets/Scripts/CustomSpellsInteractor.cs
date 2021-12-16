@@ -281,7 +281,7 @@ public class CustomSpellsInteractor : MonoBehaviour
           }
             if (creatingSpells)
             {
-              assistText.text = "creating spell! hit y to change shape!";
+              //assistText.text = "creating spell! hit y to change shape!";
                 RaycastHit hit;
                 Vector3 drawingPoint1 = Vector3.zero;
                 Vector3 drawingPoint2 = Vector3.zero;
