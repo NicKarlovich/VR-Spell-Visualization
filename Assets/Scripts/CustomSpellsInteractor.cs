@@ -49,9 +49,10 @@ public class CustomSpellsInteractor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      assistText = GetComponent<Canvas>().GetComponent<Text>(); // gives us text attatched to canvas
-      assistText.text = "creating spells now :)";
-        creatingSpells = false;
+      assistText = GetComponentInChildren<Canvas>().GetComponentInChildren<Text>(); // gives us text attatched to canvas
+      creatingSpells = false;
+      assistText.text = "in Avatar Mode!";
+
         // taken from assignment 4
         lineRenderer = new GameObject("Line").AddComponent<LineRenderer>();
         lineRenderer.startColor = Color.white;
@@ -85,9 +86,11 @@ public class CustomSpellsInteractor : MonoBehaviour
       //  Debug.Log("width");
         if(creatingSpells)
         {
-          assistText.text = "changing width of spell";
+
+          assistText.text = "creating spells now!";
             if(spellCreationStage == 4)
             {
+              assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
@@ -98,6 +101,8 @@ public class CustomSpellsInteractor : MonoBehaviour
                 }
             } else if(spellCreationStage == 5)
             {
+
+                assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
@@ -108,6 +113,8 @@ public class CustomSpellsInteractor : MonoBehaviour
                 }
             } else if (spellCreationStage == 7)
             {
+
+                assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
                 point1 = Vector3.zero;
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
@@ -119,9 +126,12 @@ public class CustomSpellsInteractor : MonoBehaviour
                 }
             } else if (spellCreationStage == 8)
             {
+
+                assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
+                  assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
                     point2 = hit.point;
                     //point2Sphere.GetComponent<MeshRenderer>().enabled = true;
                     //point2Sphere.transform.position = point2;
@@ -129,6 +139,7 @@ public class CustomSpellsInteractor : MonoBehaviour
                 }
             } else if (spellCreationStage == 10)
             {
+              assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
@@ -140,6 +151,7 @@ public class CustomSpellsInteractor : MonoBehaviour
             }
             else if (spellCreationStage == 11)
             {
+              assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
@@ -158,48 +170,54 @@ public class CustomSpellsInteractor : MonoBehaviour
         {
             if(spellCreationStage == 1)
             {
+              assistText.text = "sphere selected, x to save, y for next shape";
+
                 spellSelectScript.summonSpell("sphere", 1, 1, 1, color5);
                 spellCreationStage = 2;
             }else if (spellCreationStage == 2)
             {
+
+                assistText.text = "cylinder selected, x to save, y for next shape";
                 spellSelectScript.summonSpell("cylinder", 1, 0.5f, 1, color5);
                 spellCreationStage = 3;
             } else if (spellCreationStage == 3)
             {
+
+                assistText.text = "cube selected, x to save, y for next shape";
                 spellSelectScript.summonSpell("cube", 1, 1, 1, color5);
                 spellCreationStage = 1;
             } else if (spellCreationStage == 20)
             {
-              assistText.text = "changing color to red";
+              assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color1;
                 spellCreationStage = 21;
             } else if (spellCreationStage == 21)
             {
-              assistText.text = "changing color to yellow";
+              assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color2;
                 spellCreationStage = 22;
             }
             else if (spellCreationStage == 22)
             {
-              assistText.text = "changing color to green";
+              assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color3;
                 spellCreationStage = 23;
             }
             else if (spellCreationStage == 23)
             {
-              assistText.text = "changing color to blue";
+              assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color4;
                 spellCreationStage = 24;
             }
             else if (spellCreationStage == 24)
             {
-              assistText.text = "changing color to purple";
+              assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color5;
                 spellCreationStage = 25;
             }
             else if (spellCreationStage == 25)
             {
-              assistText.text = "changing color to black";
+              assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color6;
                 spellCreationStage = 20;
             }
@@ -212,19 +230,19 @@ public class CustomSpellsInteractor : MonoBehaviour
         {
             if (spellCreationStage == 1)
             {
-              assistText.text = "changing shape to cube";
+              assistText.text = " Ltrigger on ground to toggle size. hit Ltrigger again to confirm.";
                 spellType = "cube";
                 spellCreationStage = 4;
             }
             else if (spellCreationStage == 2)
             {
-              assistText.text = "changing shape to sphere";
+              assistText.text = " Ltrigger on ground to toggle size. hit Ltrigger again to confirm.";
                 spellType = "sphere";
                 spellCreationStage = 4;
             }
             else if (spellCreationStage == 3)
             {
-              assistText.text = "changing shape to cylinder";
+              assistText.text = " Ltrigger on ground to toggle size. hit Ltrigger again to confirm.";
                 spellType = "cylinder";
                 spellCreationStage = 4;
             } else if(spellCreationStage >= 20 && spellCreationStage <= 25)
@@ -252,10 +270,18 @@ public class CustomSpellsInteractor : MonoBehaviour
     void Update()
     {
         isAvatarMode = spellSelectScript.isAvatarMode;
+      if(isAvatarMode){
+            assistText.text = "in Avatar mode!";
+      }
+
         if (!isAvatarMode)
         {
+          if(!creatingSpells){
+            assistText.text = "in spellcaster mode!";
+          }
             if (creatingSpells)
             {
+              assistText.text = "creating spell! hit y to change shape!";
                 RaycastHit hit;
                 Vector3 drawingPoint1 = Vector3.zero;
                 Vector3 drawingPoint2 = Vector3.zero;
@@ -436,6 +462,7 @@ public class CustomSpellsInteractor : MonoBehaviour
                 }
 
             }
+            //assistText = "in spell creation mode!";
             else
             {
                 lineRenderer.GetComponent<LineRenderer>().enabled = false;
