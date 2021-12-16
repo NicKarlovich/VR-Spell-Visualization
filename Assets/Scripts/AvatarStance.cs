@@ -19,12 +19,13 @@ private Vector3 rVel;
 public GameObject spellSlice; //prefab of spell, currently b&w sphere
 public GameObject clapSpell;
 public GameObject kamSpell;
-public bool isAvatarMode = true;
+public bool isAvatarMode;
 Vector3 ogFwd;
 
     // Start is called before the first frame update
     public void Start()
     {
+      isAvatarMode = true;
       l = leftController.localPosition;
       r = rightController.localPosition;
       lPrev = leftController.localPosition;
@@ -42,8 +43,8 @@ Vector3 ogFwd;
     // Update is called once per frame
     void LateUpdate()
     {
-       isAvatarMode = GameObject.Find("EventSystem").GetComponent<SpellSelectionUI>().isAvatarMode;
-    if(enabled){
+       //enabled = GameObject.Find("EventSystem").GetComponent<SpellSelectionUI>().isAvatarMode;
+    if(isAvatarMode){
       Vector3 curFwd = h.forward;
       Vector3 lPrevRot, rPrevRot;
       curFwd = new Vector3(curFwd.x, 0, curFwd.z);
@@ -89,10 +90,10 @@ Vector3 ogFwd;
     public void Slice(){
       if(Mathf.Abs(lVel.z) <2 &&Mathf.Abs(rVel.z)<2){ //less likely to trigger when we want Kamehameha
         if((lVel.y <=-2 && lVel.y >-15 )&&(rVel.y <=-2 && rVel.y >-15) ){ //checks double slice
-        Destroy(Instantiate(spellSlice,h.position + h.forward*3, Quaternion.identity),3);
+        Destroy(Instantiate(spellSlice,h.position + h.forward*3, Quaternion.identity),5);
 
         }else if((lVel.y <=-2 && lVel.y >-15 )||(rVel.y <=-2 && rVel.y >-15 ) ){  //single slice
-        Destroy(Instantiate(spellSlice, h.position + h.forward*3, Quaternion.identity),3);
+        Destroy(Instantiate(spellSlice, h.position + h.forward*3, Quaternion.identity),5);
 
 
 
@@ -102,11 +103,11 @@ Vector3 ogFwd;
     }
 
     public void Kamehameha(){
-        if((Mathf.Abs( lVel.y) < lVel.z && Mathf.Abs (lVel.y) < lVel.z ) && (lVel.x<1) &&(rVel.x >-1) ){ //makes less likely to trigger when we want slice
+        if((Mathf.Abs( lVel.y) < lVel.z && Mathf.Abs (lVel.y) < lVel.z )||rVel.z >1.5 ||lVel.z>1.5 ){ //makes less likely to trigger when we want slice
           //if((lVel-rVel).magnitude <.5f){
-            if((lVel.z >=2 && lVel.z <15 )||(rVel.z >=2 && rVel.z <15 )){  //single Kamehameha
+            if((lVel.z <=-.7 && lVel.z >-15 )||(rVel.z <=-.7 && rVel.z >-15 )){  //single Kamehameha
 
-              Destroy(Instantiate(kamSpell, h.position + h.forward*3, Quaternion.identity),3);
+              Destroy(Instantiate(kamSpell, h.position + h.forward*3, Quaternion.identity),5);
           //  }
           }
         }
@@ -114,10 +115,14 @@ Vector3 ogFwd;
 
     public void clap(){
 
-      if(lVel.x >=1 && lVel.x <30 &&rVel.x <=-1 && rVel.x >-30 ) { //checks clap
+      if(lVel.x >=1 && lVel.x <15 &&rVel.x <=-1 && rVel.x >-15 ) { //checks clap
   //  if(Vector3.Dot(lVel, rVel)<=.8f){ //checks clap independent of direction
-        Destroy(Instantiate(clapSpell, h.position + h.forward*3, Quaternion.identity),3);
+        Destroy(Instantiate(clapSpell, h.position + h.forward*3, Quaternion.identity),5);
       }
+    }
+
+    public void toggle(){
+      isAvatarMode = !isAvatarMode;
     }
 
 }

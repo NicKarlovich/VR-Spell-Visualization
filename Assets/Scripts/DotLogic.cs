@@ -53,6 +53,9 @@ public class DotLogic : MonoBehaviour
     float runningVertTimer;
     int vertContinuousTilesMoved = 0;
 
+    public SpellSelectionUI spellSelectionScript;
+    bool isAvatarMode;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +82,8 @@ public class DotLogic : MonoBehaviour
         grabPoint.name = "Grab Point";
         grabPoint.parent = this.transform;
         selectionDot.transform.parent = grabPoint;
+        selectionDot.transform.localPosition = new Vector3(0, 0, 0);
+        selectionDot.GetComponent<MeshRenderer>().enabled = false;
     }
 
     private void OnDestroy()
@@ -98,6 +103,7 @@ public class DotLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isAvatarMode = spellSelectionScript.isAvatarMode;
         //Debug.Log(xStick);
         //Debug.Log(yStick);
         //Debug.Log(headset.transform.eulerAngles.y);
@@ -155,175 +161,195 @@ public class DotLogic : MonoBehaviour
             }
         }
 
-        /*
-        Debug.Log("North: " + facingNorth);
-        Debug.Log("East: " + facingEast);
-        Debug.Log("South: " + facingSouth);
-        Debug.Log("West: " + facingWest);
-        //Debug.Log("potato: " + facingWest);*/
-
-
-        if (pointing)
+        if(!isAvatarMode)
         {
-            selectionDot.GetComponent<MeshRenderer>().enabled = laserPointer.enabled;
-            grabPoint.localPosition = new Vector3(0, 0, grabPoint.localPosition.z);
-            if (laserPointer.enabled)
+            selectionCube.GetComponent<MeshRenderer>().enabled = true;
+            //selectionDot.GetComponent<MeshRenderer>().enabled = true;
+            if (pointing)
             {
-                laserPointer.SetPosition(1, new Vector3(0, 0, grabPoint.localPosition.z));
+                selectionDot.GetComponent<MeshRenderer>().enabled = laserPointer.enabled;
+                grabPoint.localPosition = new Vector3(0, 0, grabPoint.localPosition.z);
+                if (laserPointer.enabled)
+                {
+                    laserPointer.SetPosition(1, new Vector3(0, 0, grabPoint.localPosition.z));
+                }
+
+                Vector3 grabPos = selectionDot.transform.TransformPoint(selectionDot.transform.localPosition);
+                //Debug.Log(grabPos);
+
+                float cubeX = Mathf.Ceil(grabPos.x) - 0.5f;
+                float cubeY = Mathf.Ceil(grabPos.y) - 0.5f;
+                float cubeZ = Mathf.Ceil(grabPos.z) - 0.5f;
+
+                selectionCube.transform.position = new Vector3(cubeX, cubeY, cubeZ);
             }
-
-            Vector3 grabPos = selectionDot.transform.TransformPoint(selectionDot.transform.localPosition);
-            //Debug.Log(grabPos);
-
-            float cubeX = Mathf.Ceil(grabPos.x) - 0.5f;
-            float cubeY = Mathf.Ceil(grabPos.y) - 0.5f;
-            float cubeZ = Mathf.Ceil(grabPos.z) - 0.5f;
-
-            selectionCube.transform.position = new Vector3(cubeX, cubeY, cubeZ);
+            else
+            {
+                if (yAxisInUse)
+                {
+                    runningVertTimer = Time.time;
+                    if (runningVertTimer - vertButtonPress > timingFactor)
+                    {
+                        vertButtonPress = runningVertTimer;
+                        if (trackingADown)
+                        {
+                            AMovement();
+                        }
+                        if (trackingBDown)
+                        {
+                            BMovement();
+                        }
+                        vertContinuousTilesMoved++;
+                        if (vertContinuousTilesMoved == 2)
+                        {
+                            timingFactor = 0.2f;
+                        }
+                        if (vertContinuousTilesMoved == 3)
+                        {
+                            timingFactor = 0.17f;
+                        }
+                        if (vertContinuousTilesMoved == 4)
+                        {
+                            timingFactor = 0.13f;
+                        }
+                        if (vertContinuousTilesMoved == 7)
+                        {
+                            timingFactor = 0.1f;
+                        }
+                    }
+                }
+                if (triggerDown)
+                {
+                    runningTimer = Time.time;
+                    if (runningTimer - triggerPull > timingFactor)
+                    {
+                        triggerPull = runningTimer;
+                        doMovement();
+                        continuousTilesMoved++;
+                        if (continuousTilesMoved == 2)
+                        {
+                            timingFactor = 0.2f;
+                        }
+                        if (continuousTilesMoved == 3)
+                        {
+                            timingFactor = 0.17f;
+                        }
+                        if (continuousTilesMoved == 4)
+                        {
+                            timingFactor = 0.13f;
+                        }
+                        if (continuousTilesMoved == 7)
+                        {
+                            timingFactor = 0.1f;
+                        }
+                    }
+                }
+            }
         } else
         {
-            if(yAxisInUse)
-            {
-                runningVertTimer = Time.time;
-                if(runningVertTimer - vertButtonPress > timingFactor)
-                {
-                    vertButtonPress = runningVertTimer;
-                    if(trackingADown)
-                    {
-                        AMovement();
-                    }
-                    if(trackingBDown)
-                    {
-                        BMovement();
-                    }
-                    vertContinuousTilesMoved++;
-                    if (vertContinuousTilesMoved == 2)
-                    {
-                        timingFactor = 0.2f;
-                    }
-                    if (vertContinuousTilesMoved == 3)
-                    {
-                        timingFactor = 0.17f;
-                    }
-                    if (vertContinuousTilesMoved == 4)
-                    {
-                        timingFactor = 0.13f;
-                    }
-                    if (vertContinuousTilesMoved == 7)
-                    {
-                        timingFactor = 0.1f;
-                    }
-                }
-            }
-            if(triggerDown)
-            {
-                runningTimer = Time.time;
-                if(runningTimer - triggerPull > timingFactor)
-                {
-                    triggerPull = runningTimer;
-                    doMovement();
-                    continuousTilesMoved++;
-                    if(continuousTilesMoved == 2)
-                    {
-                        timingFactor = 0.2f;
-                    }
-                    if (continuousTilesMoved == 3)
-                    {
-                        timingFactor = 0.17f;
-                    }
-                    if (continuousTilesMoved == 4)
-                    {
-                        timingFactor = 0.13f;
-                    }
-                    if (continuousTilesMoved == 7)
-                    {
-                        timingFactor = 0.1f;
-                    }
-                }
-            }
+            selectionCube.GetComponent<MeshRenderer>().enabled = false;
+            selectionDot.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 
     public void AMovement()
     {
-        Vector3 currentCube = selectionCube.transform.position;
-        selectionCube.transform.position = currentCube + Vector3.down;
+        if(!isAvatarMode)
+        {
+            Vector3 currentCube = selectionCube.transform.position;
+            selectionCube.transform.position = currentCube + Vector3.down;
+        }
+        
     }
 
     public void ADown(InputAction.CallbackContext context)
     {
-        if(!yAxisInUse)
+        if (!isAvatarMode)
         {
-            trackingADown = true;
-            yAxisInUse = true;
-            AMovement();
-            vertContinuousTilesMoved = 0;
-            timingFactor = .4f;
-            vertButtonPress = Time.time;
-            runningVertTimer = Time.time;
+            if (!yAxisInUse)
+            {
+                trackingADown = true;
+                yAxisInUse = true;
+                AMovement();
+                vertContinuousTilesMoved = 0;
+                timingFactor = .4f;
+                vertButtonPress = Time.time;
+                runningVertTimer = Time.time;
+            }
         }
-
     }
 
     public void AUp(InputAction.CallbackContext context)
     {
-        if(trackingADown)
+        if (!isAvatarMode)
         {
-            yAxisInUse = false;
-            trackingADown = false;
+            if (trackingADown)
+            {
+                yAxisInUse = false;
+                trackingADown = false;
+            }
         }
     }
 
     public void BMovement()
     {
-        Vector3 currentCube = selectionCube.transform.position;
-        selectionCube.transform.position = currentCube + Vector3.up;
+        if (!isAvatarMode)
+        {
+            Vector3 currentCube = selectionCube.transform.position;
+            selectionCube.transform.position = currentCube + Vector3.up;
+        }
     }
 
     public void BDown(InputAction.CallbackContext context)
     {
-        if(!yAxisInUse)
+        if (!isAvatarMode)
         {
-            trackingBDown = true;
-            yAxisInUse = true;
-            BMovement();
-            vertContinuousTilesMoved = 0;
-            timingFactor = .4f;
-            vertButtonPress = Time.time;
-            runningVertTimer = Time.time;
+            if (!yAxisInUse)
+            {
+                trackingBDown = true;
+                yAxisInUse = true;
+                BMovement();
+                vertContinuousTilesMoved = 0;
+                timingFactor = .4f;
+                vertButtonPress = Time.time;
+                runningVertTimer = Time.time;
+            }
         }
     }
 
     public void BUp(InputAction.CallbackContext context)
     {
-        if(trackingBDown)
+        if (!isAvatarMode)
         {
-            yAxisInUse = false;
-            trackingBDown = false;
+            if (trackingBDown)
+            {
+                yAxisInUse = false;
+                trackingBDown = false;
+            }
         }
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (pointing){
-            Vector2 Mov = Time.deltaTime * maxVelocity * context.action.ReadValue<Vector2>();
-
-            grabPoint.transform.Translate(0, 0, -Mov.y);
-            if (grabPoint.localPosition.z < 0.25)
-            {
-                grabPoint.localPosition = new Vector3(0, 0, 0.25f);
-            }
-        } else
+        if (!isAvatarMode)
         {
-            Vector2 thumbstick = context.action.ReadValue<Vector2>();
-            xStick = thumbstick.x;
-            yStick = thumbstick.y;
+            if (pointing)
+            {
+                Vector2 Mov = Time.deltaTime * maxVelocity * context.action.ReadValue<Vector2>();
+
+                grabPoint.transform.Translate(0, 0, -Mov.y);
+                if (grabPoint.localPosition.z < 0.25)
+                {
+                    grabPoint.localPosition = new Vector3(0, 0, 0.25f);
+                }
+            }
+            else
+            {
+                Vector2 thumbstick = context.action.ReadValue<Vector2>();
+                xStick = thumbstick.x;
+                yStick = thumbstick.y;
+            }
         }
-
-
-        //Debug.Log("test?");
-        //Debug.Log(context.action.ReadValue<Vector2>());
-        //Debug.Log(xMov.y);
     }
     public void doMovement()
     {
