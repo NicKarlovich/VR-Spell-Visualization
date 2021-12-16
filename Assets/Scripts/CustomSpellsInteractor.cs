@@ -90,7 +90,7 @@ public class CustomSpellsInteractor : MonoBehaviour
           assistText.text = "creating spells now!";
             if(spellCreationStage == 4)
             {
-              assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
+              assistText.text = "changing size! use Ltrigger to draw line from surface, Ltrigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
@@ -102,7 +102,7 @@ public class CustomSpellsInteractor : MonoBehaviour
             } else if(spellCreationStage == 5)
             {
 
-                assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
+                assistText.text = "changing size! use Ltrigger to draw line from surface, Ltrigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
@@ -114,7 +114,7 @@ public class CustomSpellsInteractor : MonoBehaviour
             } else if (spellCreationStage == 7)
             {
 
-                assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
+                assistText.text = "changing size! use Ltrigger to draw line from surface, Ltrigger again to save";
                 point1 = Vector3.zero;
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
@@ -131,7 +131,7 @@ public class CustomSpellsInteractor : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
-                  assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
+                  assistText.text = "changing size! use Ltrigger to draw line from surface, Ltrigger again to save";
                     point2 = hit.point;
                     //point2Sphere.GetComponent<MeshRenderer>().enabled = true;
                     //point2Sphere.transform.position = point2;
@@ -139,7 +139,7 @@ public class CustomSpellsInteractor : MonoBehaviour
                 }
             } else if (spellCreationStage == 10)
             {
-              assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
+              assistText.text = "changing size! use Ltrigger to draw line from surface, Ltrigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
@@ -151,7 +151,7 @@ public class CustomSpellsInteractor : MonoBehaviour
             }
             else if (spellCreationStage == 11)
             {
-              assistText.text = "changing size! use trigger to draw line from surface, trigger again to save";
+              assistText.text = "changing size! use Ltrigger to draw line from surface, Ltrigger again to save";
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 {
@@ -230,19 +230,19 @@ public class CustomSpellsInteractor : MonoBehaviour
         {
             if (spellCreationStage == 1)
             {
-              assistText.text = " Ltrigger on ground to toggle size. hit Ltrigger again to confirm.";
+              assistText.text = " Ltrigger on surface + drag to toggle size";
                 spellType = "cube";
                 spellCreationStage = 4;
             }
             else if (spellCreationStage == 2)
             {
-              assistText.text = " Ltrigger on ground to toggle size. hit Ltrigger again to confirm.";
+              assistText.text = " Ltrigger on surface + drag to toggle size";
                 spellType = "sphere";
                 spellCreationStage = 4;
             }
             else if (spellCreationStage == 3)
             {
-              assistText.text = " Ltrigger on ground to toggle size. hit Ltrigger again to confirm.";
+              assistText.text = " Ltrigger on surface + drag to toggle size";
                 spellType = "cylinder";
                 spellCreationStage = 4;
             } else if(spellCreationStage >= 20 && spellCreationStage <= 25)
