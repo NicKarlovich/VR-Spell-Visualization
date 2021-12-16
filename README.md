@@ -38,7 +38,7 @@ All other assets (Arrow, materials for water etc.): Created by us
 ## Project Description
 In our simulation there are two "stances", Caster stance and Avatar Stance.  Caster stance allows for the user to move their selection cube anywhere in the world and cast any of the determined spells along with being able to make their own spells.  Avtar stance is a mode where predetermined gestures can be made in order to "cast" more flavorful and interesting spells based on the gesture that the user gestures.
 
-### Caster Stance:
+## Caster Stance:
 In caster stance there is a selection cube.  It is locked to a tile grid to simulate how in a TTRPG(Table Top Role Playing Game) spells are typically represented on a grid.  The user can move this selection cube with two interaction techniques.  Precision Mode and Pointer Mode.
 
 #### Pointer Mode:
@@ -76,6 +76,11 @@ When decding on the width, height, and or depth of a spell, click the grip butto
 
 *Aplogies for these instructions being so short, we had to rewrite them from scratch when we re-created via git push --force from memory on a very short timeline*
 
-
+## Avatar Stance:
+- First, check  that you are in avatar stance! There is a button on the UI that triggers the stances' on/off state. 
+- To cast the slice spell: move 1 or two hands quickly downwards. This should create a large blue column of light a few meters away in the direction that your headset is facing. 
+- To cast the clap spell: move both hands together in a clap motion. This should create a storm of red swirling particles in the direction that your headset is facing. 
+- To cast the swirl spell: move 1 hand in a lasso motion. This should create a green swirling spell around an orb in the direction that your headset is facing.
+- You can also have multiple spells running at once. Depending on how fast you cast spells, you can have multiple spells overlap each other at once.
 
 
