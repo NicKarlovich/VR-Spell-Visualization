@@ -47,6 +47,35 @@ Pointer mode is the name implies, controlled by where you point your right contr
 #### Precsion Mode:
 Precision mode is more precise than pointer mode.  It is the default mode that is enabled when not in Pointer Mode.  Pointer mode uses the right joystick, A & B buttons, and the trigger.  To move the spell in pointer mode, you can hold the joystick, forward, left, right, or backwards.  Then press the trigger button once to move it one tile.  If you hold the trigger button it will slowly continue moving the sphere (the delay between moves decreasing over time, kinda like how if you hold backspace for a while).  So, the joystick controlls X-Z directions.  To modify the Y-axis, press the B button to go up, and the A button go to down.  Holding down the buttons acts similarly to holding down the joystick.
 
+It should be noted that precision mode can intelligently determine which direction you are facing.  So if you start facing north and then press right on the thumbstick the spell will move to the right (-x lets say), but if you rotate 180 degrees and press right again on the thumbstick it knows you are facing the opposite direction and will move the cube to your right, which is in the +x direction.  The "direction" you're facing is controlled by your headset's y-rotation.
 
-# about:
- This was made for the final project in 5619, VR and 3D Interaction. This can be run on the Oculus Quest via the apk file. This simulation maps spells in a 3d enviroment via various 3D inteaction techniques. 
+### UI
+
+The UI of the system is on the left-hand side of the screen.  Along the top row are 3 premade spells.  The next three entries are by default empty slots that can be filled with custom spells.  These buttons won't do anything until you create a custom spell for them.  The third row is where the buttons to create said custom spells are. Along the bottom row are two more buttons, one to switch to avatar stance, and one to clear whatever spell is being visualized at the moment.
+
+### Spell Creation
+
+Controls:
+* X -> select an option in a cyclical menu (shape and color)
+* Y -> go to the next option in a cyclical menu
+* Left Grip -> select the a point in the world for a width, height, or depth calculation
+
+First you will be presented with a spell shape selector, allowing you to cycle through spell shapes
+Then you will have the option to change the width of the spell
+* Squares wil change only width
+* Cylinders will also change depth with this option
+* Spheres will change depth and ehight with this option as well
+
+Next, if applicable you will be able modify the height of the square or cylinder
+
+Finally, if applicable you will be able to modify the depth of the shape.
+
+Then finally you will be able to cycle through the different color options for the spells.
+
+When decding on the width, height, and or depth of a spell, click the grip button once to select the first location, click it again to select the second location
+
+*Aplogies for these instructions being so short, we had to rewrite them from scratch when we re-created via git push --force from memory on a very short timeline*
+
+
+
+
