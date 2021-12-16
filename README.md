@@ -35,6 +35,9 @@ Cobblestone on Ground: https://assetstore.unity.com/packages/2d/textures-materia
 
 All other assets (Arrow, materials for water etc.): Created by us
 
+# About:
+ This was made for the final project in 5619, VR and 3D Interaction. This can be run on the Oculus Quest via the apk file. This simulation maps spells in a 3D enviroment via various 3D interaction techniques. We created this to aid DND fight scenarios. We created a Spell Simulator that approaches this concept through two methods, the first through prescice, pointing and manipulation interaction techniques, and the second, through motion capture data collected from the headset and controllers of an Oculus Quest. We created the first method, Caster Stance,  so that you could create various spell shapes, sizes and colors while placing the spells on the board so that they could be helpful for planning out attacks. It's much more prescice, and allows the user to create multiple spells in a conscie and timely manner. The second method, Avatar stance, was created because we wanted a way to really immerse yourself in the game, it is a fluid spellcasting stance that reads the user's headset and controller data and casts spells accordingly. It is meant so that you can really feel like a magic user through particle simulation spells and quick movements. 
+
 ## Project Description
 In our simulation there are two "stances", Caster stance and Avatar Stance.  Caster stance allows for the user to move their selection cube anywhere in the world and cast any of the determined spells along with being able to make their own spells.  Avtar stance is a mode where predetermined gestures can be made in order to "cast" more flavorful and interesting spells based on the gesture that the user gestures.
 
@@ -76,11 +79,10 @@ When decding on the width, height, and or depth of a spell, click the grip butto
 
 *Aplogies for these instructions being so short, we had to rewrite them from scratch when we re-created via git push --force from memory on a very short timeline*
 
-## Avatar Stance:
-- First, check  that you are in avatar stance! There is a button on the UI that triggers the stances' on/off state. 
-- To cast the slice spell: move 1 or two hands quickly downwards. This should create a large blue column of light a few meters away in the direction that your headset is facing. 
-- To cast the clap spell: move both hands together in a clap motion. This should create a storm of red swirling particles in the direction that your headset is facing. 
-- To cast the swirl spell: move 1 hand in a lasso motion. This should create a green swirling spell around an orb in the direction that your headset is facing.
-- You can also have multiple spells running at once. Depending on how fast you cast spells, you can have multiple spells overlap each other at once.
 
-
+## How To Use Avatar Stance:
+* First, check  that you are in avatar stance! There is a button on the UI that triggers the stances' on/off state. 
+* To cast the slice spell: move 1 or two hands quickly downwards. This should create a large blue column of light a few meters away in the direction that your headset is facing. 
+* To cast the clap spell: move both hands together in a clap motion. This should create a storm of red swirling particles in the direction that your headset is facing. 
+* To cast the swirl spell: move 1 hand in a lasso motion. This should create a green swirling spell around an orb in the direction that your headset is facing.
+* You can also have multiple spells running at once. Depending on how fast you cast spells, you can have multiple spells overlap each other at once.
