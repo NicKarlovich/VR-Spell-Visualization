@@ -51,9 +51,10 @@ public class SpellSelectionUI : MonoBehaviour
         clearButton.onClick.AddListener(() => buttonCallBack(clearButton));
         gameModeButton.onClick.AddListener(() => buttonCallBack(gameModeButton));
 
-        genericCube = Instantiate(cube.GetComponent<Mesh>());
+        /*genericCube = Instantiate(cube.GetComponent<Mesh>());
         genericSphere = Instantiate(sphere.GetComponent<Mesh>());
         genericCylinder = Instantiate(cylinder.GetComponent<Mesh>());
+        */
 
         //button1.GetComponentInChildren<Text>().text = "Hello1";
         //button2.GetComponentInChildren<Text>().text = "Hello2";
