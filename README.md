@@ -35,6 +35,8 @@ Cobblestone on Ground: https://assetstore.unity.com/packages/2d/textures-materia
 
 All other assets (Arrow, materials for water etc.): Created by us
 
+*Aplogies for these instructions being so short, we had to rewrite them from scratch when we re-created via git push --force from memory on a very short timeline*
+
 # About:
  This was made for the final project in 5619, VR and 3D Interaction. This can be run on the Oculus Quest via the apk file. This simulation maps spells in a 3D enviroment via various 3D interaction techniques. We created this to aid DND fight scenarios. We created a Spell Simulator that approaches this concept through two methods, the first through prescice, pointing and manipulation interaction techniques, and the second, through motion capture data collected from the headset and controllers of an Oculus Quest. We created the first method, Caster Stance,  so that you could create various spell shapes, sizes and colors while placing the spells on the board so that they could be helpful for planning out attacks. It's much more prescice, and allows the user to create multiple spells in a conscie and timely manner. The second method, Avatar stance, was created because we wanted a way to really immerse yourself in the game, it is a fluid spellcasting stance that reads the user's headset and controller data and casts spells accordingly. It is meant so that you can really feel like a magic user through particle simulation spells and quick movements. 
 
@@ -76,8 +78,6 @@ Finally, if applicable you will be able to modify the depth of the shape.
 Then finally you will be able to cycle through the different color options for the spells.
 
 When decding on the width, height, and or depth of a spell, click the grip button once to select the first location, click it again to select the second location
-
-*Aplogies for these instructions being so short, we had to rewrite them from scratch when we re-created via git push --force from memory on a very short timeline*
 
 
 ## How To Use Avatar Stance:
