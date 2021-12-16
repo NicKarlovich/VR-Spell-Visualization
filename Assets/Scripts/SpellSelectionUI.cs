@@ -158,9 +158,21 @@ public class SpellSelectionUI : MonoBehaviour
         }
         if(buttonPressed == gameModeButton)
         {
-          Debug.Log("avatar mode is changed to  " + GameObject.Find("XR Rig").GetComponent<AvatarStance>().isAvatarMode);
-          GameObject.Find("XR Rig").GetComponent<AvatarStance>().toggle();
-
+            Debug.Log("avatar mode is changed to  " + GameObject.Find("XR Rig").GetComponent<AvatarStance>().isAvatarMode);
+            //boolean is opposite what you'd expect because we're about to switch it
+            if (isAvatarMode)
+            {
+                gameModeButton.GetComponentInChildren<Text>().text = "You are in:\n\nCaster\nStance";
+            }
+            else
+            {
+                gameModeButton.GetComponentInChildren<Text>().text = "You are in:\n\nAvatar\nStance";
+            }
+            GameObject.Find("XR Rig").GetComponent<AvatarStance>().toggle();
+            
+            
+            
+            
         }
 
 

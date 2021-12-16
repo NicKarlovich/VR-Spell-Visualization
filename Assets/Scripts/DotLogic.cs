@@ -82,6 +82,8 @@ public class DotLogic : MonoBehaviour
         grabPoint.name = "Grab Point";
         grabPoint.parent = this.transform;
         selectionDot.transform.parent = grabPoint;
+        selectionDot.transform.localPosition = new Vector3(0, 0, 0);
+        selectionDot.GetComponent<MeshRenderer>().enabled = false;
     }
 
     private void OnDestroy()
@@ -162,7 +164,7 @@ public class DotLogic : MonoBehaviour
         if(!isAvatarMode)
         {
             selectionCube.GetComponent<MeshRenderer>().enabled = true;
-            selectionDot.GetComponent<MeshRenderer>().enabled = true;
+            //selectionDot.GetComponent<MeshRenderer>().enabled = true;
             if (pointing)
             {
                 selectionDot.GetComponent<MeshRenderer>().enabled = laserPointer.enabled;
