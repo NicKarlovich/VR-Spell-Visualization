@@ -46,13 +46,19 @@ public class CustomSpellsInteractor : MonoBehaviour
     string spellType;
     bool isAvatarMode;
 
+    public GameObject RedDot;
+    public GameObject YellowDot;
+    public GameObject GreenDot;
+    public GameObject BlueDot;
+    public GameObject PurpleDot;
+    public GameObject BlackDot;
+
     // Start is called before the first frame update
     void Start()
     {
       assistText = GetComponentInChildren<Canvas>().GetComponentInChildren<Text>(); // gives us text attatched to canvas
       creatingSpells = false;
       assistText.text = "in Avatar Mode!";
-
         // taken from assignment 4
         lineRenderer = new GameObject("Line").AddComponent<LineRenderer>();
         lineRenderer.startColor = Color.white;
@@ -168,6 +174,7 @@ public class CustomSpellsInteractor : MonoBehaviour
     {
         if (creatingSpells)
         {
+            Vector3 upTick = new Vector3(0, 0.04f, 0);
             if(spellCreationStage == 1)
             {
               assistText.text = "sphere selected, x to save, y for next shape";
@@ -188,36 +195,48 @@ public class CustomSpellsInteractor : MonoBehaviour
                 spellCreationStage = 1;
             } else if (spellCreationStage == 20)
             {
-              assistText.text = "changing color: y for next color, x to save color";
+                RedDot.transform.position += upTick;
+                BlackDot.transform.position -= upTick;
+                assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color1;
                 spellCreationStage = 21;
             } else if (spellCreationStage == 21)
             {
               assistText.text = "changing color: y for next color, x to save color";
+                YellowDot.transform.position += upTick;
+                RedDot.transform.position -= upTick;
                 spellRepresentation.GetComponent<Renderer>().material = color2;
                 spellCreationStage = 22;
             }
             else if (spellCreationStage == 22)
             {
-              assistText.text = "changing color: y for next color, x to save color";
+                GreenDot.transform.position += upTick;
+                YellowDot.transform.position -= upTick;
+                assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color3;
                 spellCreationStage = 23;
             }
             else if (spellCreationStage == 23)
             {
-              assistText.text = "changing color: y for next color, x to save color";
+                BlueDot.transform.position += upTick;
+                GreenDot.transform.position -= upTick;
+                assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color4;
                 spellCreationStage = 24;
             }
             else if (spellCreationStage == 24)
             {
-              assistText.text = "changing color: y for next color, x to save color";
+                PurpleDot.transform.position += upTick;
+                BlueDot.transform.position -= upTick;
+                assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color5;
                 spellCreationStage = 25;
             }
             else if (spellCreationStage == 25)
             {
-              assistText.text = "changing color: y for next color, x to save color";
+                BlackDot.transform.position += upTick;
+                PurpleDot.transform.position -= upTick;
+                assistText.text = "changing color: y for next color, x to save color";
                 spellRepresentation.GetComponent<Renderer>().material = color6;
                 spellCreationStage = 20;
             }
@@ -377,7 +396,7 @@ public class CustomSpellsInteractor : MonoBehaviour
                     }
                     else
                     {
-                        spellCreationStage = 20;
+                        spellCreationStage = 19;
                     }
                 }
                 else if (spellCreationStage == 8)
@@ -410,7 +429,7 @@ public class CustomSpellsInteractor : MonoBehaviour
                     }
                     else
                     {
-                        spellCreationStage = 20;
+                        spellCreationStage = 19;
                     }
                 }
                 else if (spellCreationStage == 11)
@@ -438,6 +457,19 @@ public class CustomSpellsInteractor : MonoBehaviour
                     point1 = Vector3.zero;
                     point2 = Vector3.zero;
                     lineRenderer.GetComponent<LineRenderer>().enabled = false;
+                    spellCreationStage = 19;
+
+                }
+                else if (spellCreationStage == 19)
+                {
+                    
+                    RedDot.transform.localPosition = new Vector3(-0.1f, 0.114f, 0.099f);
+                    YellowDot.transform.localPosition = new Vector3(-0.06f, 0.114f, 0.099f);
+                    GreenDot.transform.localPosition = new Vector3(-0.02f, 0.114f, 0.099f);
+                    BlueDot.transform.localPosition = new Vector3(0.02f, 0.114f, 0.099f);
+                    PurpleDot.transform.localPosition = new Vector3(0.06f, 0.114f, 0.099f);
+                    BlackDot.transform.localPosition = new Vector3(0.1f, 0.154f, 0.099f); //uptick
+                    
                     spellCreationStage = 20;
 
                 }
