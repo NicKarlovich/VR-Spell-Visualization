@@ -1,0 +1,19 @@
+UI Contribution (25). How significant is the UI contribution of the project? Is the project simply an application, or does it have a substantial focus on new UI technology? How novel and creative is the system?
+25
+
+Technical Complexity (25). Projects should represent a substantial implementation effort.
+25
+
+Usability (25). Does the project work as intended?  Are there any serious usability problems or bugs? 
+23
+
+Documentation (5).  Are all the functions sufficiently described in the documentation?
+5
+
+Comments:
+
+There is a lot going on in this project!  This was interesting and creative.  It took a while to get the hang of the precision and pointer modes, but once I figured out the controls, it was pretty intuitive.  The gestures in the avatar stance also worked well.  The application was quite polished, and I did not encounter any bugs.
+
+The only minor issue is that there is perhaps an over-reliance on controller buttons, particularly with the spell creation interface.  Some of this could be accomplished using spatial interactions (e.g., why can't I just grab or point to the spell shape I want with my other controller?).  I found myself often selecting the wrong button by mistake.  Some spatial tooltips on the controllers could potentially mitigate this.  This is a relatively minor quibble, though. 
+
+Great job overall!
